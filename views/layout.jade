@@ -1,9 +1,11 @@
 doctype html
-html(ng-app='contentApp')
+html(ng-app='app')
 	head
 		include head
 	body
-		#header.r
-			include header
-		#content.r
-			block content 
+		#header.r(ui-view='header')
+		#content.r(ui-view='content')
+		#content.r(ng-show='false')
+			#nav.c.scroll-y(ui-view='nav')
+			#main.c.scroll-y.container-fluid(ui-view='main')
+				block main
