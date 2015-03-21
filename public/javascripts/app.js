@@ -1,7 +1,11 @@
 var app = angular.module('app', ['ngAnimate', 'ui.router']);
 
-app.config(function ($stateProvider, $urlRouterProvider) {
+app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 	$urlRouterProvider.otherwise('/');
+	$locationProvider.html5Mode({
+		enabled: true,
+		requireBase: false
+	});
 
 	$stateProvider
 		.state('app', {
@@ -35,4 +39,26 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 				}
 			}
 		})
+		.state('app.nav.datafeeds', {
+			url: 'datafeeds',
+			views: {
+				'main@': {
+					templateUrl: 'partials/datafeeds',
+					controller: 'DataFeedCtrl'
+				}
+			}
+		})
+		.state('app.nav.widgets', {
+			url: 'widgets',
+			views: {
+				'main@': {
+					templateUrl: 'partials/widgets',
+					controller: 'WidgetCtrl'
+				}
+			}
+		})
+});
+
+app.run(function ($state, $rootScope) {
+	$rootScope.$state = $state;
 });

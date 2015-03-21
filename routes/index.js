@@ -11,4 +11,12 @@ router.partials = function (req, res, next) {
 	res.render('partials/' + name);
 };
 
+router.recorder = function (req, res, next) {
+	res.render('recorder');
+};
+
+router.redirect = function (req, res, next) {
+	res.redirect('/');
+};
+
 module.exports = router;

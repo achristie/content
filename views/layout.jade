@@ -4,8 +4,8 @@ html(ng-app='app')
 		include head
 	body
 		#header.r(ui-view='header')
-		#content.r(ui-view='content')
-		#content.r(ng-show='false')
+		#content.r.container-fluid(ng-show='$state.current.name === "app"', ui-view='content')
+		#content.r(ng-cloak='', ng-show='$state.current.name !== "app"')
 			#nav.c.scroll-y(ui-view='nav')
 			#main.c.scroll-y.container-fluid(ui-view='main')
 				block main

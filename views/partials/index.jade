@@ -1,1 +1,34 @@
-h3 indexindexindex
+.row.video-background
+	#sample-video-container
+		video#sample-video(muted='', preload='metadata')
+			source(src="/public/videos/typingsample2.mov")
+
+.row
+	.learn-more
+		.col-xs-12
+			h1.text-center.text-primary Learn More
+			p.text-center.text-info Accessing Ipreo Content is simple.. blah blah.... bestinclass bestinclass bestinclass blahblahblahblbalhlashdflksdjf		
+.row.thumbnail-container
+	.col-xs-4
+		.thumbnail.text-center.color-df(ui-sref='.nav.webservices')
+			i.fa.fa-database
+			.caption
+				h3.color-df Data Feeds
+	.col-xs-4
+		.thumbnail.text-center.color-ws(ui-sref='.nav.webservices')
+			i.fa.fa-cogs
+			.caption
+				h3.color-ws.shine Web Services
+				p.text-muted the latest.. the greatest..
+	.col-xs-4
+		.thumbnail.text-center.color-wdgt(ui-sref='.nav.webservices')
+			i.fa.fa-cubes
+			.caption
+				h3.color-wdgt Widgets
+				p.text-info Widgets are prebuilt packages..
+		
+
+script.
+	setTimeout(function () {
+		$('#sample-video')[0].play();
+	}, 4000);

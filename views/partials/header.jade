@@ -1,5 +1,12 @@
-.row
-	.col-xs-6
-		h3 headerheaderheader
-	.col-xs-6
-		a(ui-sref='.nav.webservices') Click Me!
+.row(ng-class='getClass(pageName)')
+	.col-xs-7
+		.branding-container
+			h1 Ipreo 
+				small {{pageName}}
+	.col-xs-5
+		ul.list-inline
+			li.text-uppercase: a(ui-sref='/') Home
+			li.text-uppercase: a(ui-sref='.nav.datafeeds') Data Feeds
+			li.text-uppercase: a(ui-sref='.nav.webservices') Web Services
+			li.text-uppercase: a(ui-sref='.nav.widgets') Widgets
+			li.text-uppercase: a(href="mailto:content@ipreo.com") Contact
