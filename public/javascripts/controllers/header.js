@@ -2,7 +2,7 @@ app.controller('HeaderCtrl', function ($scope, $state) {
 	pageNames = ['Content', 'Web Services', 'Data Feeds', 'Widgets'];
 
 	$scope.$watch(function () {
-		return $state.current.url;
+		return $state.current.name;
 	}, function (n, o) {
 		setPageName(n);
 	});
@@ -14,10 +14,10 @@ app.controller('HeaderCtrl', function ($scope, $state) {
 		if (pgNm === pageNames[3]) { return "text-wdgt"; }
 	};
 
-	function setPageName(url) {
-		if (url == "/") { $scope.pageName = pageNames[0]; }
-		if (url == "webservices") { $scope.pageName = pageNames[1]; }
-		if (url == "datafeeds") { $scope.pageName = pageNames[2]; }
-		if (url == "widgets") { $scope.pageName = pageNames[3]; }
+	function setPageName(state) {
+		if (state == "app") { $scope.pageName = pageNames[0]; }
+		if (state == "app.webservices") { $scope.pageName = pageNames[1]; }
+		if (state == "app.datafeeds") { $scope.pageName = pageNames[2]; }
+		if (state == "app.widgets") { $scope.pageName = pageNames[3]; }
 	}
 });

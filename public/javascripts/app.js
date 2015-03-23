@@ -12,47 +12,46 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 			url: '/',
 			views: {
 				'header': {
-					templateUrl: 'partials/header',
+					templateUrl: '/partials/header',
 					controller: 'HeaderCtrl'
 				},
 				'content': {
-					templateUrl: 'partials/index',
+					templateUrl: '/partials/index',
 					controller: 'IndexCtrl'
 				}
 			}
 		})
-		.state('app.nav', {
-			url: '',
+		.state('app.webservices', {
+			url: 'webservices/{group}/{subGroup}',
+			params: {
+				group: {value: 'intro'},
+				subGroup: {value: 'start'}
+			},
 			views: {
+				'main@': {
+					templateUrl: '/partials/webservices',
+					controller: 'WebServCtrl'
+				},
 				'nav@': {
-					templateUrl: 'partials/nav',
+					templateUrl: '/partials/nav',
 					controller: 'NavCtrl'
 				}
 			}
 		})
-		.state('app.nav.webservices', {
-			url: 'webservices',
-			views: {
-				'main@': {
-					templateUrl: 'partials/webservices',
-					controller: 'WebServCtrl'
-				}
-			}
-		})
-		.state('app.nav.datafeeds', {
+		.state('app.datafeeds', {
 			url: 'datafeeds',
 			views: {
 				'main@': {
-					templateUrl: 'partials/datafeeds',
+					templateUrl: '/partials/datafeeds',
 					controller: 'DataFeedCtrl'
 				}
 			}
 		})
-		.state('app.nav.widgets', {
+		.state('app.widgets', {
 			url: 'widgets',
 			views: {
 				'main@': {
-					templateUrl: 'partials/widgets',
+					templateUrl: '/partials/widgets',
 					controller: 'WidgetCtrl'
 				}
 			}
@@ -61,4 +60,5 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
 app.run(function ($state, $rootScope) {
 	$rootScope.$state = $state;
+
 });
