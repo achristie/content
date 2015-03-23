@@ -1,11 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/', function (req, res, next) {
-	console.log('hey');
-});
-
-router.get('/nav', function (req, res, next) {
+router.get('/nav/webservices', function (req, res, next) {
 	res.json({
 		"collections": [
 			{
@@ -23,6 +19,25 @@ router.get('/nav', function (req, res, next) {
 			{
 				"collection": "Events",
 				"items": ["MeetingSchedules", "EqSecurityOwnership", "AdvancedOwnership", "Others..."]
+			}
+		]
+	});
+});
+
+router.get('/nav/datafeeds', function (req, res, next) {
+	res.json({
+		"collections": [
+			{
+				"collection": "Investor",
+				"items": ["EqInstitution", "EqInstitutionAnalytics", "EqFund", "EqFundAnalytics"]
+			},
+			{
+				"collection": "Contacts",
+				"items": ["ContactOwnership", "Contact411", "etc", "testing.."]
+			},
+			{
+				"collection": "Securities",
+				"items": ["EqSecurity", "EqSecurityAnalytics", "FiSecurity", "FiSecurityAnalytics"]
 			}
 		]
 	});

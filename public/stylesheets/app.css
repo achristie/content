@@ -6,7 +6,7 @@
 .scroll-x { overflow-x: auto; }
 .scroll-y { overflow-y: auto; }
 
-#header.r { height: 65px; top: 0; background-color: #2C3E50; color: white;}
+#header.r { height: 65px; top: 0; background-color: #1B3650; color: white;}
 #content.r { top: 65px; bottom: 0; padding-left: 0px; }
 
 #nav { left: 0; width: 220px; }
