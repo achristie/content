@@ -1,12 +1,12 @@
 app.factory('navData', function ($http, $q, $state, $rootScope) {
 	//promises
-	var navCollection,
-		group,
-		subGroup,
+	var navCollection = {},
 		groups,
-		subGroups;
+		subGroups,
+		group,
+		subGroup;
 
-	getCollection = function (type) {
+	var getCollection = function (type) {
 		if ('undefined' == typeof(navCollection[type])) {
 			navCollection[type] = $http.get('/api/nav/' + type).then(function (d) {
 				return d.data;
@@ -15,14 +15,15 @@ app.factory('navData', function ($http, $q, $state, $rootScope) {
 		return navCollection[type];
 	};
 
-	//check initial url
 
-	//detect url changes
-	$rootScope.$on('$stateChangeStart', function (e, toState, toParams, fromState, fromParams) {
+	function stateChange(e, toState, toParams, fromState, fromParams) {
 		var pageNm = toState.name.slice(4, toState.name.length);
+
 		if (pageNm == 'webservices' || pageNm == 'datafeeds' || pageNm == 'widgets') {
+			var col = {};
 
 			groups = getCollection(pageNm).then(function (d) {
+				col = d;
 				return d.collections.map(function (n) { return n.collection; });
 			});
 
@@ -31,77 +32,69 @@ app.factory('navData', function ($http, $q, $state, $rootScope) {
 				if (idx >= 0) {
 					return g[idx];
 				} else {
-					return [];
+					return g[0];
 				}
 			});
 
 			subGroups = group.then(function (g) {
-				var idx = navCollection[pageNm].collections[]
-			})
+				var idx = col.collections.map(function (d) { return d.collection; }).indexOf(g);
+				return col.collections[idx].items;
+			});
 
+			subGroup = subGroups.then(function (sg) {
+				var idx = sg.indexOf(toParams.subGroup);
 
-			group = function (groups) {
-				var idx = groups.
-			}
-			
-			groups = getCollection(pageNm).then(function (d) {
-				arr = d.collections.map(function (n) { return n.collection; });
-				var idx = arr.indexOf(toParams.group);
-				if ( idx >= 0) { 
-					group = groups[idx];
+				if (idx >= 0) {
+					return sg[idx];
 				} else {
-					group = groups[0];
+					return sg[0];
 				}
 			});
 
-			subGroups = getCollection(pageNm).then(function (d) {
-				var idx = d.collections.map(function (n) { return n.collection; }).indexOf(toParams.group);
-
-				if (idx >= 0) {
-					return d.collections[idx].items;
-				} else {
-					return [];
-				}
-			});	
-			
-
+			//check that subGroup and group exist, otherwise $state.go
+			subGroup.then(function (sg) {
+				group.then(function (g) {
+					if (toParams.group !== g || toParams.subGroup !== sg) {
+						$state.go(toState, {group: g, subGroup: sg});
+					}
+				});
+			});
 		}
-	});
+	};
 
 
-
-	//all of these return a deferred object
 	return {
+		onStateChange: function (e, toState, toParams, fromState, fromParams) {
+			stateChange(e, toState, toParams, fromState, fromParams);
+			return;
+		},
 		getGroup: function () {
+			//promise
 			return group;
 		},
-		getGroups: function (type) {
-			var groups = [];
-			if ('undefined' == typeof(navCollection[type])) {
-				groups = getCollection(type).then(function (d) {
-					return d.collections.map(function (d) { return d.collection; });;
-				});
-			} 
+		getGroups: function () {
+			//promise
 			return groups;
 		},
-		getSubGroups: function (type, group) {
-			var sub = [];
-			if ('undefined' == typeof(navCollection[type])) {
-				sub = getCollection(type).then(function (d) {
-					var idx = d.collections.map(function (n) { return n.collection; }).indexOf(group);
+		getSubGroups: function (g) {
+			//promise
+			if (!g) {
+				return subGroups;
+			} else {
+				return getCollection($state.current.name.slice(4, 400)).then(function (d) {
+					var idx = d.collections.map(function (n) { return n.collection; }).indexOf(g);
 
 					if (idx >= 0) {
 						return d.collections[idx].items;
 					} else {
-						//group not found
 						return [];
 					}
 				});
-			} 
-			return sub;
+			}
 		},
-		getCollection: function (type) {
-			return 0;
+		getSubGroup: function () {
+			//promise
+			return subGroup;
 		}
 	}	
 });

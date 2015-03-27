@@ -24,8 +24,8 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 		.state('app.webservices', {
 			url: 'webservices/{group}/{subGroup}',
 			params: {
-				group: {value: 'intro'},
-				subGroup: {value: 'start'}
+				group: {value: 'Ownership'},
+				subGroup: {value: 'Advanced'}
 			},
 			views: {
 				'main@': {
@@ -44,6 +44,10 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 				'main@': {
 					templateUrl: '/partials/datafeeds',
 					controller: 'DataFeedCtrl'
+				},
+				'nav@': {
+					templateUrl: '/partials/nav',
+					controller: 'NavCtrl'
 				}
 			}
 		})
@@ -53,12 +57,19 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 				'main@': {
 					templateUrl: '/partials/widgets',
 					controller: 'WidgetCtrl'
+				},
+				'nav@': {
+					templateUrl: '/partials/nav',
+					controller: 'NavCtrl'
 				}
 			}
 		})
 });
 
-app.run(function ($state, $rootScope) {
+app.run(function ($state, $rootScope, navData) {
 	$rootScope.$state = $state;
 
+	$rootScope.$on('$stateChangeStart', function (e, toState, toParams, fromState, fromParams) {
+		navData.onStateChange(e, toState, toParams, fromState, fromParams);
+	});
 });
