@@ -6,34 +6,27 @@
 .scroll-x { overflow-x: auto; }
 .scroll-y { overflow-y: auto; }
 
-#header.r { height: 65px; top: 0; background-color: #1B3650; color: white;}
+#header.r { height: 65px; top: 0; background-color: #045a8d; color: white;}
 #content.r { top: 65px; bottom: 0; padding-left: 0px; }
 
-#nav { left: 0; width: 220px; }
+#nav { left: 0; width: 180px; background-color: rgb(100, 100, 100)}
 
 #nav ul.list-group > .list-group-item { border: none; background-color: transparent; color: white; border-radius: 0;}
 
-#nav > .top-nav { width: 100px; background-color: rgb(84, 136, 163); }
+#nav > .top-nav { width: 180px; background-color: rgb(100, 200, 100); }
 #nav > .top-nav ul.list-group > .list-group-item:hover { cursor: pointer; background: #2C3E50; }
 #nav > .top-nav ul.list-group > .list-group-item { padding: 10px 5px; }
 #nav > .top-nav ul.list-group > .list-group-item > h5 { margin: 5px; font-weight: 400;}
 
-#nav > .sub-nav { width: 120px; left: 100px; background-color: #2C3E50;}
-#nav > .sub-nav ul.list-group { margin-top: 30px; }
-#nav > .sub-nav ul.list-group > .list-group-item { padding: 8px 10px; }
-#nav > .sub-nav ul.list-group > .list-group-item:hover, #nav > .sub-nav ul.list-group > .list-group-item.active { cursor: pointer; background-color: white; color: #2C3E50; }
-
-
-
 .branding-container { width: 95%; margin-left: auto; margin-right: auto; }
 .branding-container h1 { margin: 0; line-height: 65px; padding-right: 10px; }
 
-#header ul.list-inline { line-height: 65px; margin: 0;}
-#header ul.list-inline > li > a { padding-right: 10px; color: white; }
-#header ul.list-inline > li > a:hover { text-decoration: none; color: white; }
+#header ul.list-inline { line-height: 65px; margin: 0; }
+#header ul.list-inline > li { transition: background-color 1s; padding-right: 10px; text-transform: uppercase;}
+#header ul.list-inline > li:hover { cursor: pointer; background-color: rgb(224, 231, 236); color: #045a8d;}
 
 
-#main { left: 220px; right: 0; margin: 10px; border: 1px solid rgb(228, 228, 228); }
+#main { left: 180px; right: 0; margin: 10px; border: 1px solid rgb(228, 228, 228); }
 
 video {
   width: 100%    !important;
@@ -46,7 +39,7 @@ video {
 }
 
 .video-background {
-	background: #F3F7FC;
+	background: rgb(224, 231, 236);
 }
 
 .text-ws { color: #F35051; }
@@ -56,7 +49,6 @@ video {
 .bg-ws { background: #F35051; }
 .bg-df { background: #BB1EA1; }
 .bg-wdgt { background: #04BE00; }
-.bg-content { background-color: #2C3E50; }
 
 .thumbnail-container {
 	margin-top: 20px;
@@ -67,8 +59,10 @@ video {
 
 .thumbnail-container .thumbnail {
 	border: 1px solid white;
-	padding: 20px;	
+	padding: 20px;
+	transition: all .2s ease-in-out;
 }
+
 
 .thumbnail:hover {
 	cursor: pointer;
@@ -76,6 +70,7 @@ video {
 
 .thumbnail-container .thumbnail:hover {
 	border: 1px solid #ddd;
+	transform: scale(1.1);
 }
 
 .learn-more {
@@ -86,4 +81,8 @@ video {
 
 .thumbnail i {
 	font-size: 20vw;
+}
+
+[ui-view].ng-enter {
+	animation: fadeIn 3s;
 }

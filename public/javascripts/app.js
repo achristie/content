@@ -21,46 +21,32 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 				}
 			}
 		})
-		.state('app.webservices', {
-			url: 'webservices/{group}/{subGroup}',
+		.state('app.nav', {
+			url: '',
+			abstract: true,
+			views: {
+				'content@': {
+					templateUrl: '/partials/layout'
+				},
+				'nav@app.nav': {
+					templateUrl: '/partials/nav',
+					controller: 'NavCtrl'
+				},
+				'content@app.nav': { 
+					template: '<ui-view/>'
+				}
+			}
+		})
+		.state('app.nav.webservices', {
+			url: 'webservices/:group/:subGroup',
 			params: {
-				group: {value: 'Ownership'},
-				subGroup: {value: 'Advanced'}
+				group: {value: 'Intro'},
+				subGroup: {value: 'Getting Started'}
 			},
 			views: {
-				'main@': {
+				'content@app.nav': {
 					templateUrl: '/partials/webservices',
 					controller: 'WebServCtrl'
-				},
-				'nav@': {
-					templateUrl: '/partials/nav',
-					controller: 'NavCtrl'
-				}
-			}
-		})
-		.state('app.datafeeds', {
-			url: 'datafeeds',
-			views: {
-				'main@': {
-					templateUrl: '/partials/datafeeds',
-					controller: 'DataFeedCtrl'
-				},
-				'nav@': {
-					templateUrl: '/partials/nav',
-					controller: 'NavCtrl'
-				}
-			}
-		})
-		.state('app.widgets', {
-			url: 'widgets',
-			views: {
-				'main@': {
-					templateUrl: '/partials/widgets',
-					controller: 'WidgetCtrl'
-				},
-				'nav@': {
-					templateUrl: '/partials/nav',
-					controller: 'NavCtrl'
 				}
 			}
 		})

@@ -1,8 +1,4 @@
 .top-nav.c
 	ul.list-group
-		li.list-group-item(ng-repeat='g in groups', ng-click='setGroup(g)')
-			h5 {{ g }}
-.sub-nav.c
-	ul.list-group
-		li.list-group-item(ng-repeat='sg in subGroups', ng-click='setState(sg)')
-			span {{ sg }}
+		li.list-group-item(ng-repeat='c in col', ng-click='setGroup(g)')
+			h5 {{ c.collection }}

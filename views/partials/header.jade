@@ -1,12 +1,12 @@
 .row
-	.col-xs-7
+	.col-xs-5
 		.branding-container
 			h1 Ipreo 
 				small(ng-class='getClass(pageName)') {{pageName}}
-	.col-xs-5
-		ul.list-inline
-			li.text-uppercase: a(ui-sref='app') Home
-			li.text-uppercase: a(ui-sref='app.datafeeds') Data Feeds
-			li.text-uppercase: a(ui-sref='app.webservices') Web Services
-			li.text-uppercase: a(ui-sref='app.widgets') Widgets
-			li.text-uppercase: a(href="mailto:content@ipreo.com") Contact
+	.col-xs-7
+		ul.list-inline.pull-right
+			li(ui-sref='app') Home
+			li(ui-sref='.nav.datafeeds') Data Feeds
+			li(ui-sref='.nav.webservices') Web Services
+			li(ui-sref='.nav.widgets') Widgets
+			li(href="mailto:content@ipreo.com") Contact

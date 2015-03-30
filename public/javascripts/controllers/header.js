@@ -1,5 +1,5 @@
 app.controller('HeaderCtrl', function ($scope, $state) {
-	pageNames = ['Content', 'Web Services', 'Data Feeds', 'Widgets'];
+	pageNames = ['', 'Web Services', 'Data Feeds', 'Widgets'];
 
 	$scope.$watch(function () {
 		return $state.current.name;
@@ -16,8 +16,8 @@ app.controller('HeaderCtrl', function ($scope, $state) {
 
 	function setPageName(state) {
 		if (state == "app") { $scope.pageName = pageNames[0]; }
-		if (state == "app.webservices") { $scope.pageName = pageNames[1]; }
-		if (state == "app.datafeeds") { $scope.pageName = pageNames[2]; }
-		if (state == "app.widgets") { $scope.pageName = pageNames[3]; }
+		if (state == "app.nav.webservices") { $scope.pageName = pageNames[1]; }
+		if (state == "app.nav.datafeeds") { $scope.pageName = pageNames[2]; }
+		if (state == "app.nav.widgets") { $scope.pageName = pageNames[3]; }
 	}
 });

@@ -1,31 +1,32 @@
 .row.video-background
 	#sample-video-container
 		video#sample-video(muted='', preload='metadata')
-			source(src="/public/videos/typingsample2.mov")
-
+			source(src="/videos/typingsample2.mov")
 .row
 	.learn-more
 		.col-xs-12
 			h1.text-center.text-primary Learn More
-			p.text-center.text-info Accessing Ipreo Content is simple.. blah blah.... bestinclass bestinclass bestinclass blahblahblahblbalhlashdflksdjf		
+			p.text-center.text-info
+				| Ipreo's content can be accessed 	
 .row.thumbnail-container
 	.col-xs-4
-		.thumbnail.text-center.color-df(ui-sref='.nav.webservices')
+		.thumbnail.text-center.text-df(ui-sref='.nav.webservices')
 			i.fa.fa-database
 			.caption
-				h3.color-df Data Feeds
+				h3.text-df Data Feeds
 	.col-xs-4
-		.thumbnail.text-center.color-ws(ui-sref='.nav.webservices')
+		.thumbnail.text-center.text-ws(ui-sref='.nav.webservices')
 			i.fa.fa-cogs
 			.caption
-				h3.color-ws.shine Web Services
+				h3.text-ws.shine Web Services
 				p.text-muted the latest.. the greatest..
 	.col-xs-4
-		.thumbnail.text-center.color-wdgt(ui-sref='.nav.webservices')
+		.thumbnail.text-center.text-wdgt(ui-sref='.nav.webservices')
 			i.fa.fa-cubes
 			.caption
-				h3.color-wdgt Widgets
-				p.text-info Widgets are prebuilt packages..
+				h3.text-wdgt Widgets
+				p.text-muted
+					| Widgets are embeddable Web Components which use Ipreo's Web Services
 		
 
 script.
