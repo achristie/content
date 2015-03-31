@@ -1,5 +1,5 @@
 app.controller('HeaderCtrl', function ($scope, $state) {
-	pageNames = ['', 'Web Services', 'Data Feeds', 'Widgets'];
+	pageNames = ['Content', 'Web Services', 'Data Feeds', 'Widgets'];
 
 	$scope.$watch(function () {
 		return $state.current.name;

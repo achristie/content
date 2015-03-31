@@ -50,6 +50,32 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 				}
 			}
 		})
+		.state('app.nav.datafeeds', {
+			url: 'datafeeds/:group/:subGroup',
+			params: {
+				group: {value: 'Intro'},
+				subGroup: {value: 'Getting Started'}
+			},
+			views: {
+				'content@app.nav': {
+					templateUrl: '/partials/datafeeds',
+					controller: 'DataFeedCtrl'
+				}
+			}
+		})
+		.state('app.nav.widgets', {
+			url: 'widgets/:group/:subGroup',
+			params: {
+				group: {value: 'Intro'},
+				subGroup: {value: 'Getting Started'}
+			},
+			views: {
+				'content@app.nav': {
+					templateUrl: '/partials/widgets',
+					controller: 'WidgetCtrl'
+				}
+			}
+		})
 });
 
 app.run(function ($state, $rootScope, navData) {

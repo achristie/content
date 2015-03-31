@@ -1,4 +1,9 @@
-.top-nav.c
+.nav-container.c(ng-class='getBackground()')
 	ul.list-group
 		li.list-group-item(ng-repeat='c in col', ng-click='setGroup(g)')
-			h5 {{ c.collection }}
+			div
+				span {{ c.collection }}
+			.sub-nav
+				ul.list-group
+					li.li-group-item(ng-repeat='i in c.items')
+						h6 {{i}}
