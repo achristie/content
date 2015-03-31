@@ -32,6 +32,8 @@
 		
 
 script.
+	var vid = $('#sample-video')[0];
 	setTimeout(function () {
-		$('#sample-video')[0].play();
-	}, 4000);
+		vid.playbackRate = 2;	
+		vid.play();
+	}, 3000);
