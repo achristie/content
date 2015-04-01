@@ -2,7 +2,8 @@ app.controller('NavCtrl', function ($scope, navData, $state) {
 	$scope.col;
 	var pageNames = ['Content', 'Web Services', 'Data Feeds', 'Widgets'];
 
-	$scope.setState = function (sg) {
+	$scope.setState = function (g, sg) {
+		$state.go($state.current.name, {group: g.name, subGroup: sg.name});
 		//ensure that group or subgroup changed before changing state
 		/*navData.getGroup().then(function (grp) {
 			if ($scope.subGroup !== sg || $scope.group !== grp) {
