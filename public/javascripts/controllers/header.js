@@ -7,11 +7,18 @@ app.controller('HeaderCtrl', function ($scope, $state) {
 		setPageName(n);
 	});
 
-	$scope.getClass = function (pgNm) {
-		if (pgNm === pageNames[0]) { return "text-content"; }
-		if (pgNm === pageNames[1]) { return "text-ws"; }
-		if (pgNm === pageNames[2]) { return "text-df"; }
-		if (pgNm === pageNames[3]) { return "text-wdgt"; }
+	$scope.getClass = function () {
+		if ($scope.pageName === pageNames[0]) { return "text-content"; }
+		if ($scope.pageName === pageNames[1]) { return "text-ws"; }
+		if ($scope.pageName === pageNames[2]) { return "text-df"; }
+		if ($scope.pageName === pageNames[3]) { return "text-wdgt"; }
+	};
+
+	$scope.getGradient = function () {
+		if ($scope.pageName === pageNames[0]) { return "bg-content-grdt"; }
+		if ($scope.pageName === pageNames[1]) { return "bg-ws-grdt"; }
+		if ($scope.pageName === pageNames[2]) { return "bg-df-grdt"; }
+		if ($scope.pageName === pageNames[3]) { return "bg-wdgt-grdt"; }
 	};
 
 	function setPageName(state) {

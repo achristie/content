@@ -4,19 +4,18 @@ app.controller('NavCtrl', function ($scope, navData, $state) {
 
 	$scope.setState = function (g, sg) {
 		$state.go($state.current.name, {group: g.name, subGroup: sg.name});
-		//ensure that group or subgroup changed before changing state
-		/*navData.getGroup().then(function (grp) {
-			if ($scope.subGroup !== sg || $scope.group !== grp) {
-				$scope.subGroup = sg;
-				$state.go($state.current.name, {group: $scope.group, subGroup: sg});
-			}
-		});*/
 	};
 
 	$scope.$watch(function () {
 		return $state.current.name;
 	}, function (n, o) {
 		setPageName(n);
+		navData.getCurrentCollection().then(function (d) {
+			var idx = d.map(function (d) { return d.isActive; }).indexOf(true);
+			d[idx].isOpen = true;
+
+			$scope.col = d;	
+		});
 	});
 
 	function setPageName(state) {
@@ -34,22 +33,10 @@ app.controller('NavCtrl', function ($scope, navData, $state) {
 	};
 
 	$scope.getBackground = function () {
-		if ($scope.pageName === pageNames[0]) { return "bg-content"; }
-		if ($scope.pageName === pageNames[1]) { return "bg-ws"; }
-		if ($scope.pageName === pageNames[2]) { return "bg-df"; }
-		if ($scope.pageName === pageNames[3]) { return "bg-wdgt"; }
-	};
-
-	navData.getCurrentCollection().then(function (d) {
-		//oninit set the active group to open
-		var idx = d.map(function (d) { return d.isActive; }).indexOf(true);
-		d[idx].isOpen = true;
-
-		$scope.col = d;
-	});
-
-	$scope.open = function (g) {
-		g.isOpen = !g.isOpen;
+		if ($scope.pageName === pageNames[0]) { return "bg-content-hvr"; }
+		if ($scope.pageName === pageNames[1]) { return "bg-ws-hvr"; }
+		if ($scope.pageName === pageNames[2]) { return "bg-df-hvr"; }
+		if ($scope.pageName === pageNames[3]) { return "bg-wdgt-hvr"; }
 	};
 
 });

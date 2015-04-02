@@ -3,7 +3,7 @@
 		.branding-container
 			h1 Ipreo 
 				small(ng-class='getClass(pageName)') {{pageName}}
-	.col-xs-7
+	.col-xs-7(ng-class='getGradient(pageName)')
 		ul.list-inline.pull-right
 			li(ui-sref='app') Home
 			li(ui-sref='.nav.datafeeds') Data Feeds

@@ -1,9 +1,8 @@
-.nav-container.c
-	accordion(close-others='true')
-		accordion-group(ng-repeat='c in col', is-open='c.isOpen')
-			accordion-heading
-				div
-					{{c.name}}
-			ul.list-group
-				li.list-group-item(ng-repeat='i in c.items', ng-class='getColor()', ng-click='setState(c, i)')
-					span {{i.name}}
+accordion(close-others='true')
+	accordion-group(ng-repeat='c in col', is-open='c.isOpen')
+		accordion-heading
+			div(ng-class='getBackground()')
+				{{c.name}}
+		ul.list-group
+			li.list-group-item(ng-repeat='i in c.items', ng-class='getColor()', ng-click='setState(c, i)')
+				span {{i.name}}

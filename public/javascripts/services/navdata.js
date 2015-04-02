@@ -1,7 +1,8 @@
 app.factory('navData', function ($http, $q, $state, $rootScope) {
 	//promises
 	var navCollection = {},
-		currentCollection;
+		currentCollection,
+		currentActives = {};
 
 	var getCollection = function (type) {
 		if ('undefined' == typeof(navCollection[type])) {
@@ -20,6 +21,7 @@ app.factory('navData', function ($http, $q, $state, $rootScope) {
 				return a;
 			});
 		}
+
 		return navCollection[type];
 	};
 
@@ -56,37 +58,70 @@ app.factory('navData', function ($http, $q, $state, $rootScope) {
 
 	};
 
+	function inActivateAll() {
+		currentCollection.then(function (d) {
+			$.each(d, function (i, v) {
+				v.isActive = false;
+				$.each(v.items, function (i, v) {
+					v.isActive = false;
+				})
+			})
+		})
+	}
+
+	function getValidParams(col, group, subGroup) {
+		var idx = col.map(function (d) { return d.name; }).indexOf(group);
+
+		if (idx == -1) {
+			var g = col[0].name,
+				sg = col[0].items[0].name;
+
+			return {group: g, subGroup: sg};
+		} else {
+			var i = col[idx].items.map(function (d) { return d.name; }).indexOf(subGroup);
+
+			if (i == -1) {
+				var sg = col[idx].items[0].name;
+
+				return {group: group, subGroup: sg};
+			}
+		}
+		return {group: group, subGroup: subGroup};
+	}
+
 	function stateChange(e, toState, toParams, fromState, fromParams) {
-		var pageNm = toState.name.slice(8, toState.name.length);
+		var toPage = toState.name.slice(8, toState.name.length),
+			fromPage = toState.name.slice(8, fromState.name.length);
 
-		if (pageNm == 'webservices' || pageNm == 'datafeeds' || pageNm == 'widgets') {
-			
-			//on state change we have to make sure the correct group and subgroup are marked as active.
-			currentCollection = getCollection(pageNm).then(function (d) {
+		if (toPage == 'webservices' || toPage == 'datafeeds' || toPage == 'widgets') {
+
+			if (currentActives.hasOwnProperty(toPage) && toParams.group == null && toParams.subGroup == null) {
+				$state.go(toState, currentActives[toPage]);
+				return;
+			}
+
+			currentCollection = getCollection(toPage).then(function (d) {
+				var param = getValidParams(d, toParams.group, toParams.subGroup),
+					isParamValid = toParams.group == param.group && toParams.subGroup == param.subGroup ? true : false;
 				
-				return d;
-			});
-
-			currentCollection.then(function (d) {
-				toggleActive(fromParams.group, fromParams.subGroup);
-				var idx = d.map(function (e) { return e.name; }).indexOf(toParams.group);
-
-				if (idx == -1) {
-					var group = d[0].name,
-						sg = d[0].items[0].name;
-
-					$state.go(toState, {group: group, subGroup: sg});
-				} else {
-					var i = d[idx].items.map(function (d) { return d.name;}).indexOf(toParams.subGroup);
-
-					if (i == -1) {
-						var sg = d[idx].items[0];
-
-						$state.go(toState, {group: d[idx].name, subGroup: sg });
-					}
+				//redirect if invalid parameters
+				if (!isParamValid) {
+					$state.go(toState, param);
+					return;
 				}
 
-				toggleActive(toParams.group, toParams.subGroup);
+				//inActivate all
+				inActivateAll();
+
+				//save actives per page so if the previous state can be reloaded if navigating via menu bar
+				if (!currentActives.hasOwnProperty(toPage)) {
+					currentActives[toPage] = {};
+				}
+				currentActives[toPage] = param;
+				console.log(currentActives);
+				toggleActive(param.group, param.subGroup);
+
+				return d;
 			});
 		}
 	};

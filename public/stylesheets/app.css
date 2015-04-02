@@ -8,23 +8,30 @@
 
 #header.r { height: 65px; top: 0; background-color: #242d36; color: white;}
 #content.r { top: 65px; bottom: 0; padding-left: 0px; }
-.content-container { margin-left: auto; margin-right: auto;}
+.content-container { 
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+  border: 1px solid rgb(228, 228, 228);
+  box-shadow: -8px -6px 5px 0px rgb(230, 230, 230);
+}
 
-#nav, .nav-container { left: 0; width: 200px; background: #f1f1f1; border-right:1px solid gainsboro;}
+#nav { left: 0; width: 200px; background: #f1f1f1; border-right:1px solid gainsboro;}
 
 #nav .panel-group { margin-bottom: 0; }
-#nav .panel { margin-top: 0; border: 1px solid gainsboro; border-radius: 0; background: transparent;}
+#nav .panel { margin-top: 0; border: none; border-radius: 0; background: transparent;}
 #nav .panel .panel-heading {
   border-radius: 0;
-  height: 40px;
-  line-height: 40px;
   background: transparent;
   cursor: pointer;
-  transition: background-color 1s;
+  padding: 0px 0px;
 }
-#nav .panel .panel-heading:hover { background: #bd0e36;}
-#nav .panel .panel-header { }
-#nav .panel .panel-body { padding: 0; }
+#nav .panel .panel-heading .panel-title {
+  height: 40px;
+  line-height: 40px;
+}
+#nav h4.panel-title > a > div { padding: 0 15px; transition: background-color 1s; }
+#nav .panel .panel-body { padding: 0; border: none;}
 .accordion-toggle:hover, .accordion-toggle:focus { text-decoration: none;}
 
 #nav ul.list-group { margin-bottom: 0; color: black;}
@@ -40,7 +47,8 @@
 #header ul.list-inline > li:hover { cursor: pointer; background-color: rgb(224, 231, 236); color: #242d36;}
 
 
-#main { left: 200px; right: 0; margin: 20px; border: 1px solid rgb(228, 228, 228); box-shadow: -8px -6px 5px 0px rgb(230, 230, 230);}
+#main { left: 200px; right: 0;}
+#main > div { margin: 20px; margin-bottom: 0; }
 
 video {
   width: 100%    !important;
@@ -61,10 +69,46 @@ video {
 .text-wdgt { color: #04BE00; }
 .text-content { color: rgb(245, 102, 39); }
 
-.bg-ws { background: #F35051; }
-.bg-df { background: #326D8B; }
-.bg-content { background: rgb(245, 102, 39); }
-.bg-wdgt { background: #04BE00; }
+.bg-ws, .bg-ws-hvr:hover { background: #F35051 !important; font: white !important;}
+.bg-df, .bg-df-hvr:hover { background: #326D8B !important; font: white !important; }
+.bg-content, .bg-content-hvr:hover { background: rgb(245, 102, 39) !important; font: white !important;}
+.bg-wdgt, .bg-wdgt-hvr:hover { background: #04BE00 !important; font: white !important;}
+
+.bg-ws-grdt { 
+  background-image: linear-gradient(right, #F35051 1%, #242d36 40%); 
+  background-image: -o-linear-gradient(right, #F35051 1%, #242d36 40%); 
+  background-image: -moz-linear-gradient(right, #F35051 1%, #242d36 40%); 
+  background-image: -ms-linear-gradient(right, #F35051 1%, #242d36 40%); 
+  background-image: -webkit-linear-gradient(right, #F35051 1%, #242d36 40%); 
+  background-image: gradient(right, #F35051 1%, #242d36 40%); 
+}
+
+.bg-content-grdt { 
+  background-image: linear-gradient(right, rgb(245, 102, 39) 1%, #242d36 40%); 
+  background-image: -o-linear-gradient(right, rgb(245, 102, 39) 1%, #242d36 40%); 
+  background-image: -moz-linear-gradient(right, rgb(245, 102, 39) 1%, #242d36 40%); 
+  background-image: -ms-linear-gradient(right, rgb(245, 102, 39) 1%, #242d36 40%); 
+  background-image: -webkit-linear-gradient(right, rgb(245, 102, 39) 1%, #242d36 40%); 
+  background-image: gradient(right, rgb(245, 102, 39) 1%, #242d36 40%); 
+}
+
+.bg-df-grdt { 
+  background-image: linear-gradient(right, #326D8B 1%, #242d36 40%); 
+  background-image: -o-linear-gradient(right, #326D8B 1%, #242d36 40%); 
+  background-image: -moz-linear-gradient(right, #326D8B 1%, #242d36 40%); 
+  background-image: -ms-linear-gradient(right, #326D8B 1%, #242d36 40%); 
+  background-image: -webkit-linear-gradient(right, #326D8B 1%, #242d36 40%); 
+  background-image: gradient(right, #326D8B 1%, #242d36 40%); 
+}
+
+.bg-wdgt-grdt { 
+  background-image: linear-gradient(right, #04BE00 1%, #242d36 40%); 
+  background-image: -o-linear-gradient(right, #04BE00 1%, #242d36 40%); 
+  background-image: -moz-linear-gradient(right, #04BE00 1%, #242d36 40%); 
+  background-image: -ms-linear-gradient(right, #04BE00 1%, #242d36 40%); 
+  background-image: -webkit-linear-gradient(right, #04BE00 1%, #242d36 40%); 
+  background-image: gradient(right, #04BE00 1%, #242d36 40%); 
+}
 
 .thumbnail-container {
 	margin-top: 20px;

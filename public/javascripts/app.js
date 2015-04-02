@@ -40,8 +40,8 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 		.state('app.nav.webservices', {
 			url: 'webservices/:group/:subGroup',
 			params: {
-				group: {value: 'Intro'},
-				subGroup: {value: 'Getting Started'}
+				group: {value: null},
+				subGroup: {value: null}
 			},
 			views: {
 				'content@app.nav': {
@@ -53,8 +53,8 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 		.state('app.nav.datafeeds', {
 			url: 'datafeeds/:group/:subGroup',
 			params: {
-				group: {value: 'Intro'},
-				subGroup: {value: 'Getting Started'}
+				group: {value: null},
+				subGroup: {value: null}
 			},
 			views: {
 				'content@app.nav': {
@@ -66,8 +66,8 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 		.state('app.nav.widgets', {
 			url: 'widgets/:group/:subGroup',
 			params: {
-				group: {value: 'Intro'},
-				subGroup: {value: 'Getting Started'}
+				group: {value: null},
+				subGroup: {value: null}
 			},
 			views: {
 				'content@app.nav': {
