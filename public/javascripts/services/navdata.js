@@ -95,10 +95,10 @@ app.factory('navData', function ($http, $q, $state, $rootScope) {
 
 		if (toPage == 'webservices' || toPage == 'datafeeds' || toPage == 'widgets') {
 
-			if (currentActives.hasOwnProperty(toPage) && toParams.group == null && toParams.subGroup == null) {
+			/*if (currentActives.hasOwnProperty(toPage) && toParams.group == "" && toParams.subGroup == "") {
 				$state.go(toState, currentActives[toPage]);
 				return;
-			}
+			}*/
 
 			currentCollection = getCollection(toPage).then(function (d) {
 				var param = getValidParams(d, toParams.group, toParams.subGroup),
@@ -118,7 +118,8 @@ app.factory('navData', function ($http, $q, $state, $rootScope) {
 					currentActives[toPage] = {};
 				}
 				currentActives[toPage] = param;
-				console.log(currentActives);
+
+				//activate group and subgroup
 				toggleActive(param.group, param.subGroup);
 
 				return d;
@@ -135,6 +136,9 @@ app.factory('navData', function ($http, $q, $state, $rootScope) {
 		getCurrentCollection: function () {
 			//promise
 			return currentCollection;
+		},
+		getCurrentActives: function () {
+			return currentActives;
 		}
 	}	
 });

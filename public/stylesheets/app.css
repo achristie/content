@@ -48,7 +48,6 @@
 
 
 #main { left: 200px; right: 0;}
-#main > div { margin: 20px; margin-bottom: 0; }
 
 video {
   width: 100%    !important;
@@ -69,10 +68,10 @@ video {
 .text-wdgt { color: #04BE00; }
 .text-content { color: rgb(245, 102, 39); }
 
-.bg-ws, .bg-ws-hvr:hover { background: #F35051 !important; font: white !important;}
-.bg-df, .bg-df-hvr:hover { background: #326D8B !important; font: white !important; }
-.bg-content, .bg-content-hvr:hover { background: rgb(245, 102, 39) !important; font: white !important;}
-.bg-wdgt, .bg-wdgt-hvr:hover { background: #04BE00 !important; font: white !important;}
+.bg-ws, .bg-ws-hvr:hover { background: #F35051 !important; color: white !important;}
+.bg-df, .bg-df-hvr:hover { background: #326D8B !important; color: white !important; }
+.bg-content, .bg-content-hvr:hover { background: rgb(245, 102, 39) !important; color: white !important;}
+.bg-wdgt, .bg-wdgt-hvr:hover { background: #04BE00 !important; color: white !important;}
 
 .bg-ws-grdt { 
   background-image: linear-gradient(right, #F35051 1%, #242d36 40%); 
@@ -145,6 +144,7 @@ video {
 
 /* Have to set height explicity on ui-view 
 to prevent collapsing during animation*/
+/*
 [ui-view].ng-enter, [ui-view].ng-leave {
   position: absolute;
   left: 0;

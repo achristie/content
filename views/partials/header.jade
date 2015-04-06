@@ -5,8 +5,8 @@
 				small(ng-class='getClass(pageName)') {{pageName}}
 	.col-xs-7(ng-class='getGradient(pageName)')
 		ul.list-inline.pull-right
-			li(ui-sref='app') Home
-			li(ui-sref='.nav.datafeeds') Data Feeds
-			li(ui-sref='.nav.webservices') Web Services
-			li(ui-sref='.nav.widgets') Widgets
+			li(ui-sref='app.index') Home
+			li(ui-sref='.nav.datafeeds(dataFeeds)') Data Feeds
+			li(ui-sref='.nav.webservices(webServices)') Web Services
+			li(ui-sref='.nav.widgets(widgets)') Widgets
 			li(href="mailto:content@ipreo.com") Contact

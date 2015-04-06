@@ -9,13 +9,22 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
 	$stateProvider
 		.state('app', {
-			url: '/',
+			url: '',
+			abstract: true,
 			views: {
 				'header': {
 					templateUrl: '/partials/header',
 					controller: 'HeaderCtrl'
 				},
 				'content': {
+					template: '<ui-view/>'
+				}
+			}
+		})
+		.state('app.index', {
+			url: '/',
+			views: {
+				'content@': {
 					templateUrl: '/partials/index',
 					controller: 'IndexCtrl'
 				}
@@ -38,7 +47,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 			}
 		})
 		.state('app.nav.webservices', {
-			url: 'webservices/:group/:subGroup',
+			url: '/webservices/:group/:subGroup',
 			params: {
 				group: {value: null},
 				subGroup: {value: null}
@@ -51,11 +60,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 			}
 		})
 		.state('app.nav.datafeeds', {
-			url: 'datafeeds/:group/:subGroup',
-			params: {
-				group: {value: null},
-				subGroup: {value: null}
-			},
+			url: '/datafeeds/:group/:subGroup',
 			views: {
 				'content@app.nav': {
 					templateUrl: '/partials/datafeeds',
@@ -64,11 +69,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 			}
 		})
 		.state('app.nav.widgets', {
-			url: 'widgets/:group/:subGroup',
-			params: {
-				group: {value: null},
-				subGroup: {value: null}
-			},
+			url: '/widgets/:group/:subGroup',
 			views: {
 				'content@app.nav': {
 					templateUrl: '/partials/widgets',
