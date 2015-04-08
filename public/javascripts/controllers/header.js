@@ -30,7 +30,7 @@ app.controller('HeaderCtrl', function ($scope, $state, navData) {
 	};
 
 	function setPageName(state) {
-		if (state == "app") { $scope.pageName = pageNames[0]; }
+		if (state == "app.index") { $scope.pageName = pageNames[0]; }
 		if (state == "app.nav.webservices") { $scope.pageName = pageNames[1]; }
 		if (state == "app.nav.datafeeds") { $scope.pageName = pageNames[2]; }
 		if (state == "app.nav.widgets") { $scope.pageName = pageNames[3]; }

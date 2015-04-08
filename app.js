@@ -23,6 +23,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', routes.index);
+app.get('/navLayout', routes.navLayout);
 app.get('/partials/:name', routes.partials);
 app.get('/recorder', routes.recorder);
 app.use('/api', api);

@@ -2,6 +2,13 @@ var app = angular.module('app', ['ngAnimate', 'ui.router', 'ui.bootstrap']);
 
 app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 	$urlRouterProvider.otherwise('/');
+
+	//so user can navigate directly to /type
+	$urlRouterProvider.when('/webservices', '/webservices/Intro/Getting Started')
+	$urlRouterProvider.when('/datafeeds', '/datafeeds/Intro/Getting Started')
+	$urlRouterProvider.when('/widgets', '/widgets/Intro/Getting Started')
+
+
 	$locationProvider.html5Mode({
 		enabled: true,
 		requireBase: false
@@ -35,7 +42,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 			abstract: true,
 			views: {
 				'content@': {
-					templateUrl: '/partials/layout'
+					templateUrl: '/navLayout'
 				},
 				'nav@app.nav': {
 					templateUrl: '/partials/nav',

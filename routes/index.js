@@ -6,6 +6,10 @@ router.index = function (req, res, next) {
 	res.render('index');
 };
 
+router.navLayout = function (req, res, next) {
+	res.render('navLayout');
+};
+
 router.partials = function (req, res, next) {
 	var name = req.params.name;
 	res.render('partials/' + name);

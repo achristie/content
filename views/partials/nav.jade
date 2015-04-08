@@ -1,5 +1,5 @@
 accordion(close-others='true')
-	accordion-group(ng-repeat='c in col', is-open='c.isOpen')
+	accordion-group(ng-repeat='c in col', is-open='c.isOpen').repeat-animation
 		accordion-heading
 			div(ng-class='getBackground()')
 				{{c.name}}

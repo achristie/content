@@ -142,6 +142,30 @@ video {
 	font-size: 20vw;
 }
 
+.repeat-animation.ng-enter-stagger,
+.repeat-animation.ng-leave-stagger,
+.repeat-animation.ng-move-stagger {
+  /* notice how we're using animation instead of transition here */ 
+  -webkit-animation-delay:0.15s;
+  animation-delay:0.15s;
+
+   yes we still need to do this too 
+  -webkit-animation-duration:0;
+  animation-duration:0;
+}
+
+.repeat-animation.ng-leave-stagger { animation-delay: 0.1s; -webkit-animation-delay: 0.1s;}
+
+.repeat-animation.ng-enter {
+  -webkit-animation: rotateInDownLeft 0.4s;
+  animation: rotateInDownLeft 0.4s; 
+}
+.repeat-animation.ng-leave {
+  -webkit-animation: fadeOut 1s;
+  animation: fadeOut 1s;
+}
+
+
 /* Have to set height explicity on ui-view 
 to prevent collapsing during animation*/
 /*
