@@ -19,7 +19,7 @@
 #nav { left: 0; width: 200px; background: #f1f1f1; border-right:1px solid gainsboro;}
 
 #nav .panel-group { margin-bottom: 0; }
-#nav .panel { margin-top: 0; border: none; border-radius: 0; background: transparent;}
+#nav .panel { margin-top: 0; border: none; border-radius: 0; background: transparent; box-shadow: 0 1px 1px rgba(0,0,0,.2)}
 #nav .panel .panel-heading {
   border-radius: 0;
   background: transparent;
@@ -48,6 +48,7 @@
 
 
 #main { left: 200px; right: 0;}
+#main .page { bottom: 0;}
 
 video {
   width: 100%    !important;
@@ -149,7 +150,6 @@ video {
   -webkit-animation-delay:0.15s;
   animation-delay:0.15s;
 
-   yes we still need to do this too 
   -webkit-animation-duration:0;
   animation-duration:0;
 }
@@ -168,41 +168,19 @@ video {
 
 /* Have to set height explicity on ui-view 
 to prevent collapsing during animation*/
-/*
-[ui-view].ng-enter, [ui-view].ng-leave {
-  position: absolute;
-  left: 0;
-  right: 0;
-  -webkit-transition:all .5s ease-in-out;
-    -moz-transition:all .5s ease-in-out;
-    -o-transition:all .5s ease-in-out;
-    transition:all .5s ease-in-out;
+
+.page.ng-enter, .page.ng-leave {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
 }
 
-[ui-view].ng-enter {
-  opacity: 0;
-  -webkit-transform:scale3d(0.5, 0.5, 0.5);
-  -moz-transform:scale3d(0.5, 0.5, 0.5);
-  transform:scale3d(0.5, 0.5, 0.5);
+.page.ng-enter {
+   -webkit-animation-name: slideInLeft;
+   animation-name: slideInLeft;
 }
 
-[ui-view].ng-enter-active {
-  opacity: 1;
-  -webkit-transform:scale3d(1, 1, 1);
-  -moz-transform:scale3d(1, 1, 1);
-  transform:scale3d(1, 1, 1);
-}
-
-[ui-view].ng-leave {
-  opacity: 1; 
-  -webkit-transform:translate3d(0, 0, 0);
-  -moz-transform:translate3d(0, 0, 0);
-  transform:translate3d(0, 0, 0);
-}
-
-[ui-view].ng-leave-active {
-  opacity: 0;
-  -webkit-transform:translate3d(100px, 0, 0);
-  -moz-transform:translate3d(100px, 0, 0);
-  transform:translate3d(100px, 0, 0);
+.page.ng-leave {
+  background: rgba(0, 0, 0, .5);
+   -webkit-animation-name: slideOutRight;
+   animation-name: slideOutRight;
 }
