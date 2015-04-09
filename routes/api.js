@@ -1,46 +1,12 @@
 var express = require('express');
 var router = express.Router();
+var nav = require('./api/nav');
+var packages = require('./api/packages');
 
-router.get('/nav/webservices', function (req, res, next) {
-	res.json({
-		"collections": [
-			{
-				"collection": "Ownership",
-				"items": ["EqInvestorOwnership", "EqSecurityOwnership", "AdvancedOwnership", "Others..."]
-			},
-			{
-				"collection": "Contacts",
-				"items": ["ContactOwnership", "Contact411", "etc", "testing.."]
-			},
-			{
-				"collection": "Investors",
-				"items": ["EqInvestorOwnership", "AdvancedOwnership", "HistoricalInvestorOwnership"]
-			},
-			{
-				"collection": "Events",
-				"items": ["MeetingSchedules", "EqSecurityOwnership", "AdvancedOwnership", "Others..."]
-			}
-		]
-	});
-});
-
-router.get('/nav/datafeeds', function (req, res, next) {
-	res.json({
-		"collections": [
-			{
-				"collection": "Investor",
-				"items": ["EqInstitution", "EqInstitutionAnalytics", "EqFund", "EqFundAnalytics"]
-			},
-			{
-				"collection": "Contacts",
-				"items": ["ContactOwnership", "Contact411", "etc", "testing.."]
-			},
-			{
-				"collection": "Securities",
-				"items": ["EqSecurity", "EqSecurityAnalytics", "FiSecurity", "FiSecurityAnalytics"]
-			}
-		]
-	});
+router.use('/nav', nav);
+router.use('/packages', packages)
+router.get('*', function (req, res, next) {
+	res.send(404, '404 - API Not Found');
 });
 
 module.exports = router;
