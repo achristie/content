@@ -1,6 +1,6 @@
 var app = angular.module('app', ['ngAnimate', 'ui.router', 'ui.bootstrap']);
 
-app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $provide) {
 	$urlRouterProvider.otherwise('/');
 
 	//so user can navigate directly to /type
@@ -84,6 +84,36 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 				}
 			}
 		})
+
+
+
+	$provide.decorator('$q', function($delegate) {
+		function httpResponseWrapper(fn) {
+			return function(res) {
+				if (res.hasOwnProperty('data') && res.hasOwnProperty('status') && res.hasOwnProperty('headers') && res.hasOwnProperty('config') && res.hasOwnProperty('statusText')) {
+					return fn(res.data, res.status, res.headers, res.config, res.statusText);
+				} else {
+					return fn(res);
+				}
+			};
+		};
+		function decorator(promise) {
+			promise.success = function(fn) {
+				return decorator(promise.then(httpResponseWrapper(fn)));
+			};
+			promise.error = function(fn) {
+				return decorator(promise.then(null, httpResponseWrapper(fn)));
+			};
+			return promise;
+		};
+		var defer = $delegate.defer;
+		$delegate.defer = function() {
+			var deferred = defer();
+			decorator(deferred.promise);
+			return deferred;
+		};
+		return $delegate;
+	});
 });
 
 app.run(function ($state, $rootScope, navData) {
