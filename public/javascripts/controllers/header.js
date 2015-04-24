@@ -16,25 +16,39 @@ app.controller('HeaderCtrl', function ($scope, $state, navData) {
 	}, true);
 
 	$scope.getClass = function () {
-		if ($scope.pageName === pageNames[0]) { return "text-content"; }
+		//if ($scope.pageName === pageNames[0]) { return "text-content"; }
 		if ($scope.pageName === pageNames[1]) { return "text-ws"; }
 		if ($scope.pageName === pageNames[2]) { return "text-df"; }
 		if ($scope.pageName === pageNames[3]) { return "text-wdgt"; }
+
+		return "text-content"
 	};
 
 	$scope.getGradient = function () {
-		if ($scope.pageName === pageNames[0]) { return "bg-content-grdt"; }
+		//if ($scope.pageName === pageNames[0]) { return "bg-content-grdt"; }
 		if ($scope.pageName === pageNames[1]) { return "bg-ws-grdt"; }
 		if ($scope.pageName === pageNames[2]) { return "bg-df-grdt"; }
 		if ($scope.pageName === pageNames[3]) { return "bg-wdgt-grdt"; }
+
+		return "bg-content-grdt";
 	};
 
 	function setPageName(state) {
-		if (state == "app.index") { $scope.pageName = pageNames[0]; }
-		if (state == "app.nav.webservices") { $scope.pageName = pageNames[1]; }
-		if (state == "app.nav.datafeeds") { $scope.pageName = pageNames[2]; }
-		if (state == "app.nav.widgets") { $scope.pageName = pageNames[3]; }
-	}
+		//if (state == "app.index") { $scope.pageName = pageNames[0]; }
+		if (state == "app.nav.webservices") { 
+			$scope.pageName = pageNames[1]; 
+			return;
+		}
+		if (state == "app.nav.datafeeds") { 
+			$scope.pageName = pageNames[2]; 
+			return;
+		}
+		if (state == "app.nav.widgets") { 
+			$scope.pageName = pageNames[3]; 
+			return;
+		}
 
+		$scope.pageName = pageNames[0];
+	}
 
 });

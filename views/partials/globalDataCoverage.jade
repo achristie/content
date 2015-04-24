@@ -1,0 +1,80 @@
+.lm
+	.row.section1
+		.lm-content
+			.col-xs-12
+				.rel
+					.huge.iLB [
+					.iLB
+						h2.text-uppercase.text-primary Global Data Coverage
+						p.text-primary Data from the most complete and accurate global institutional database
+						p.text-primary on the market
+					.huge.iLB ]
+	.space
+	.row.section2
+		.lm-content
+			.col-xs-12
+				h2.text-warning Global Contacts and Institutions by Type
+		.lm-content
+			.col-xs-4
+				.panel.panel-default.ipreo-light(ng-repeat='s in stats.InstitutionCounts', ng-class='{active: s.type == activeTypeName}', ng-click='clickType(s)')
+					.panel-heading
+						h4.text-primary {{s.type}}
+					.panel-body
+						.row
+							.col-xs-6.no-right-padding
+								ul.list-group
+									li.list-group-item Contacts
+										span.badge(ng-bind='getSum(s.data, "contacts") | number')
+							.col-xs-6.no-left-padding
+								ul.list-group
+									li.list-group-item Firms
+										span.badge(ng-bind='getSum(s.data, "firms") | number')
+			.col-xs-8
+				h3.no-margin-top {{activeTypeName}}
+				.col-xs-12.alert.alert-success 
+					strong Relevant 
+					p info about {{ activeTypeName }}. ..... placeholder...... add info
+				.row
+					.col-xs-12
+						h4.text-center Regional Breakout
+				.row
+					.col-xs-7
+						table.table-condensed.table.table-bordered
+							tr
+								th Region
+								th.text-right.clickable(ng-click='clickBreakout("contacts")', ng-class='{active: "contacts" == breakout }') Contacts
+								th.text-right.clickable(ng-click='clickBreakout("firms")', ng-class='{active: "firms" == breakout }') Firms
+							tr(ng-repeat='t in activeType.data')
+								td
+									i.fa.fa-square(ng-class="getRegionClass(t.region)")
+									span {{t.region}}
+								td.text-right.clickable(ng-click='clickBreakout("contacts")', ng-class='{active: "contacts" == breakout }') {{t.contacts | number}}
+								td.text-right.clickable(ng-click='clickBreakout("firms")', ng-class='{active: "firms" == breakout }') {{t.firms | number}}
+					.col-xs-5
+						pie-chart(data="activeType.data", value-field="breakout", title='breakout')
+	.space
+	.row.section3
+		.lm-content
+			.col-xs-12
+				h2.text-white Continuous, Up-to-date Research
+				.col-xs-10
+					p.lead In addition to continuous, real-time additions to our product, providing the best data to our clients also means removing stale or inactive institutions and contacts. Our research teams add and remove firms on a proactive basis to ensure that we are never inflating our data.
+				.col-xs-2
+			.col-xs-12
+				.col-xs-4
+					h3.text-center 4th Quarter 2014
+				.col-xs-8
+					table.table
+						tr
+							th Type
+							th.text-right Removals
+							th.text-right Additions
+						tr
+							td Buyside
+							td 100 
+							td 200
+						tr
+							td Sellside
+							td 100 
+							td 200
+	

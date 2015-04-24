@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngAnimate', 'ui.router', 'ui.bootstrap']);
+var app = angular.module('app', ['ngAnimate', 'ui.router', 'ui.bootstrap', 'd3']);
 
 app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $provide) {
 	$urlRouterProvider.otherwise('/');
@@ -34,6 +34,15 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $pro
 				'content@': {
 					templateUrl: '/partials/index',
 					controller: 'IndexCtrl'
+				}
+			}
+		})
+		.state('app.globalDataCoverage', {
+			url: '/gdc',
+			views: {
+				'content@': {
+					templateUrl: '/partials/globalDataCoverage',
+					controller: 'GlobalDataCoverageCtrl'
 				}
 			}
 		})
@@ -116,7 +125,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $pro
 	});
 });
 
-app.run(function ($state, $rootScope, navData) {
+app.run(function ($state, $rootScope, navData, stats) {
 	$rootScope.$state = $state;
 
 	$rootScope.$on('$stateChangeStart', function (e, toState, toParams, fromState, fromParams) {

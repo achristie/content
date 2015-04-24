@@ -139,6 +139,12 @@ video {
 	margin-left: auto;
 }
 
+.lm-content {
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .thumbnail i {
 	font-size: 20vw;
 }
@@ -194,6 +200,11 @@ to prevent collapsing during animation*/
   animation: rotateFoldRight .7s both ease;
 }
 
+.no-gutter > [class*='col-'] {
+    padding-right:0;
+    padding-left:0;
+}
+
 /*
 .page-container {
   position: relative;
@@ -214,3 +225,65 @@ to prevent collapsing during animation*/
   backface-visibility: hidden;
   transform: translate3d(0, 0, 0);
 }*/
+
+.text-white { color: white; }
+.clickable { cursor: pointer; }
+.no-margin-top { margin-top: 0;}
+
+/*learn more page */
+
+.huge { font-size: 1200%; color: rgb(199, 226, 246); font-weight: 700;}
+.lm .section1 {
+  background-color: rgb(225, 240, 251);
+  height: 180px;
+}
+
+.iLB {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.lm .section1 .rel {
+  position: relative;
+  top: -14px;
+}
+
+.lm .section3 {
+  background-color: rgb(41, 99, 147);
+  height: 400px;
+}
+
+.lm .section3 .lead { color: rgb(180, 180, 180); padding: 15px; }
+
+.chart-title { fill: rgb(120, 120, 120); font-size: 150%;}
+
+.panel.ipreo-light { cursor: pointer; margin-bottom: 5px; border: none; border-bottom: 1px solid #ddd; border-radius: 0; background-color: #ddd }
+.panel.ipreo-light .panel-body {padding: 0; background-color: transparent; transition: all .5s ease-in-out; }
+.panel.ipreo-light .panel-heading { transition: background-color .5s ease-in-out; border-bottom: none; background-color: transparent;}
+.panel.ipreo-light .panel-heading h4 { margin-top: 0; margin-bottom: 0;}
+
+.panel.ipreo-light:hover .panel-body { background-color: rgb(199, 226, 246); }
+.panel.ipreo-light:hover .panel-heading { background-color: #337ab7; }
+.panel.ipreo-light:hover .panel-heading h4 { color: white;}
+.panel.ipreo-light.active .panel-body { background-color: rgb(199, 226, 246); }
+.panel.ipreo-light.active .panel-heading { background-color: #337ab7; }
+.panel.ipreo-light.active .panel-heading h4 { color: white;}
+
+.panel.ipreo-light .panel-body .list-group { border: none; margin-bottom: 0;}
+.panel.ipreo-light .panel-body .list-group-item { border: none; background-color: transparent; padding: 5px 15px;}
+
+
+
+.space { height: 40px;}
+
+table .americas { color: rgb(31, 119, 180); padding-right: 5px;}
+table .europe { color: rgb(174, 199, 232);padding-right: 5px;}
+table .apac { color: rgb(255, 127, 14); padding-right: 5px;}
+table .mea { color: rgb(255, 187, 120); padding-right: 5px;}
+
+.lm .table tr .active { background-color: #E7E7E7; }
+
+.no-right-padding { padding-right: 0; }
+.no-left-padding { padding-left: 0;}
+
+/* end of learn more page */
