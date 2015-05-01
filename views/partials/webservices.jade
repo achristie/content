@@ -1,3 +1,21 @@
-.row
-	.col-xs-12
-		h1 {{package.name}}
+.ws
+	.row
+		.col-xs-12
+			h1 {{package.name}}
+	.row
+		.col-xs-12(ng-show='hasError')
+			.alert.alert-danger
+				p There was an error loading this page. Please try again later.
+				p Contact us if this continues.
+	.row
+		.col-xs-6
+			.alert.alert-success
+				p {{readme}}
+		.col-xs-6
+			ipreo-ws-sample-list(samples='package.samples')
+			
+	.row
+		.col-xs-12
+			h3 Response
+	.row
+		.col-xs-12

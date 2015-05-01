@@ -58,7 +58,7 @@ app.controller('GlobalDataCoverageCtrl', function ($scope, stats, $interval) {
 			} else {
 				$scope.stopCycle();
 			}
-		}, 7000)
+		}, 5000)
 	};
 
 	$scope.$on('$destroy', function () {

@@ -13,7 +13,7 @@
 	.row.section2
 		.lm-content
 			.col-xs-12
-				h2.text-warning Global Contacts and Institutions by Type
+				h2.text-warning.pad-bottom Global Contacts and Institutions by Type
 		.lm-content
 			.col-xs-4
 				.panel.panel-default.ipreo-light(ng-repeat='s in stats.InstitutionCounts', ng-class='{active: s.type == activeTypeName}', ng-click='clickType(s)')
@@ -60,21 +60,35 @@
 				.col-xs-10
 					p.lead In addition to continuous, real-time additions to our product, providing the best data to our clients also means removing stale or inactive institutions and contacts. Our research teams add and remove firms on a proactive basis to ensure that we are never inflating our data.
 				.col-xs-2
+			.row
+				.col-xs-12(ng-repeat='(k, v) in stats.Deltas').pad-bottom
+					.col-xs-3
+						h3.text-center.mea {{k}}
+					.col-xs-9
+						table.table.table-bordered
+							tr
+								th.text-white.no-border-r Type
+								th.text-right.text-white.no-border-l.no-border-r Removals
+								th.text-right.text-white.no-border-l Additions
+							tr(ng-repeat='(n, o) in v').text-subdued
+								td.no-border-r {{n}}
+								td.text-right.no-border-r.no-border-l {{o.removed.contact | number}} Contacts + {{o.removed.firm | number}} Firms
+								td.text-right.no-border-l {{o.added.contact | number}} Contacts + {{o.added.firm | number}} Firms
+	.row.section4
+		.lm-content
 			.col-xs-12
-				.col-xs-4
-					h3.text-center 4th Quarter 2014
-				.col-xs-8
-					table.table
-						tr
-							th Type
-							th.text-right Removals
-							th.text-right Additions
-						tr
-							td Buyside
-							td 100 
-							td 200
-						tr
-							td Sellside
-							td 100 
-							td 200
-	
+				h2.text-warning Corporate Issuers
+				.col-xs-10
+					p.lead coverage of corporate issuers is important.. ceos.. cfos.. ir professionals.. find out who to contact at a company..
+				.col-xs-2
+			.col-xs-3
+			.col-xs-9
+				table.table-condensed.table.table-bordered
+					tr
+						th Region
+						th.text-right Issuers
+						th.text-right Contacts
+					tr(ng-repeat='d in stats.IssuerCounts')
+						td {{d.region}}
+						td.text-right {{d.issuers | number}}
+						td.text-right {{d.contacts | number}}

@@ -1,5 +1,15 @@
 {
 	"name": "InvestorProfileEQ",
 	"tags": ["EqOwnership", "Investor"],
-	"protocol": "Ipreo"
+	"protocol": "Ipreo",
+	"endpoints": [
+		{ "authType": "oAuth", "path": "/oauth/rest/API/InvestorProfileEQ.svc" },
+		{ "authType": "httpBasic", "path": "/public/rest/API/InvestorProfileEQ.svc"}
+	],
+	"samples": [
+		{ "name": "Including Focus Security", "params": "$Components=InvestorDetails,TopHoldings,TopBuys,TopSells,FocusOwnership&investor_id=606617&security_id=119773&$format=json" },
+		{ "name": "Including Focus Security", "params": "$format=json&$Components=InvestorDetails,TopHoldings,TopBuys,TopSells,FocusOwnership&investor_id=606617&security_id=119773" },
+		{ "name": "Including Focus Security", "params": "$format=json&$Components=InvestorDetails,TopHoldings,TopBuys,TopSells,FocusOwnership&investor_id=606617&security_id=119773" },
+		{ "name": "Including Focus Security", "params": "$format=json&$Components=InvestorDetails,TopHoldings,TopBuys,TopSells,FocusOwnership&investor_id=606617&security_id=119773" }
+	]
 }

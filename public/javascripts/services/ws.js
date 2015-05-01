@@ -1,4 +1,6 @@
 app.factory('ws', function ($http, $q, davosUrl) {
+	var cache = {};
+
 	var getPkgJson = function (subGroup) {
 		return $http.get('/api/packages/webservices/' + subGroup + '/package.json');
 	};
@@ -18,11 +20,15 @@ app.factory('ws', function ($http, $q, davosUrl) {
 
 	return {
 		getWsInfo: function (subGroup) {
-			return $q.all([
-				getPkgJson(subGroup),
-				getRmMd(subGroup),
-				getDavosDescription(subGroup)
-			]);
+			//TODO: don't add to cache if request fails.
+			if (!cache.hasOwnProperty(subGroup)) {
+				cache[subGroup] = $q.all([
+					getPkgJson(subGroup),
+					getRmMd(subGroup),
+					getDavosDescription(subGroup)
+				]);
+			}
+			return cache[subGroup];
 		},
 		getPackageJson: function (subGroup) {
 			return getPkgJson(subGroup);

@@ -1,1 +1,1 @@
-<h3> heeeeeeeeeeeeey </h3>
+Service returns multiple Components capturing the key investor details and ownership profile of a known investor (firm or fund). All ownership positions are as of "current" with share and value change reflecting current period vs prior quarter end. Requests are made using a valid Ipreo investor identifier. An optional parameter for security id can be supplied for the FocusOwnership component. This component isolates the current position (if any exists) in the specified security.

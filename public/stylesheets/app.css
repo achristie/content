@@ -16,6 +16,13 @@
   box-shadow: -8px -6px 5px 0px rgb(230, 230, 230);
 }
 
+.ws { max-width: 1200px; }
+.dark-response-container { background: #333; padding: 8px; }
+.ws-sample{ padding: 0; height: 400px; max-height: 400px; }
+.ws-sample .title { margin: 10px 5px ;}
+.ws-sample .list-group { margin-bottom: 0; }
+.ws-sample .list-group-item { border-left: 0; border-right: 0; border-radius: 0; background-color: transparent; padding: 8px 15px;}
+
 #nav { left: 0; width: 200px; background: #f1f1f1; border-right:1px solid gainsboro;}
 
 #nav .panel-group { margin-bottom: 0; }
@@ -176,28 +183,28 @@ video {
 to prevent collapsing during animation*/
 
 .page.ng-enter, .page.ng-leave {
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
 }
 
 .page.ng-enter {
-  -webkit-animation: moveFromLeft .6s ease both;
-  animation: moveFromLeft .6s ease both;
+  -webkit-animation: moveFromLeft 0.5s ease both;
+  animation: moveFromLeft 0.5s ease both;
 }
 
 .page.ng-leave {
   -webkit-transform-origin: 0% 50%;
   transform-origin: 0% 50%;
-  -webkit-animation: rotateFoldRight .7s both ease;
-  animation: rotateFoldRight .7s both ease;
+  -webkit-animation: rotateFoldRight 0.7s both ease;
+  animation: rotateFoldRight 0.7s both ease;
 }
 
 
 .pt-page-rotateFoldRight {
   -webkit-transform-origin: 0% 50%;
   transform-origin: 0% 50%;
-  -webkit-animation: rotateFoldRight .7s both ease;
-  animation: rotateFoldRight .7s both ease;
+  -webkit-animation: rotateFoldRight 0.7s both ease;
+  animation: rotateFoldRight 0.7s both ease;
 }
 
 .no-gutter > [class*='col-'] {
@@ -250,10 +257,10 @@ to prevent collapsing during animation*/
 
 .lm .section3 {
   background-color: rgb(41, 99, 147);
-  height: 400px;
 }
 
-.lm .section3 .lead { color: rgb(180, 180, 180); padding: 15px; }
+.lm .section3 .lead { color: rgb(180, 180, 180); }
+.lm .lead { padding: 15px; }
 
 .chart-title { fill: rgb(120, 120, 120); font-size: 150%;}
 
@@ -273,6 +280,9 @@ to prevent collapsing during animation*/
 .panel.ipreo-light .panel-body .list-group-item { border: none; background-color: transparent; padding: 5px 15px;}
 
 
+.lm .no-border-l { border-left: none; border-top: none; border-bottom: none;}
+.lm .no-border-r { border-right: none; border-top: none; border-bottom: none; }
+
 
 .space { height: 40px;}
 
@@ -282,8 +292,13 @@ table .apac { color: rgb(255, 127, 14); padding-right: 5px;}
 table .mea { color: rgb(255, 187, 120); padding-right: 5px;}
 
 .lm .table tr .active { background-color: #E7E7E7; }
+.text-subdued { color: rgb(180, 180, 180); }
+.mea { color: rgb(255, 187, 120); }
 
 .no-right-padding { padding-right: 0; }
 .no-left-padding { padding-left: 0;}
+.lm .pad-bottom { padding-bottom: 25px;}
+
+
 
 /* end of learn more page */
