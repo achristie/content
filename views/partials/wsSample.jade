@@ -1,0 +1,4 @@
+.well.well-sm.ws-sample
+	h3.title {{sample.name || title}}
+	ipreo-ws-sample-list(samples='samples', sample='sample', ng-hide='sample')
+	ipreo-ws-sample-detail(sample='sample', ng-show='sample')

@@ -1,10 +1,12 @@
-app.directive('ipreoWsSampleDetail', function () {
+app.directive('ipreoWsSampleDetail', function ($http, $state, davosUrl) {
+
+	var controller = ['$scope', function ($scope) {
 	
-	/*(var controller = app.controller('WebServSampleCtrl', function ($scope) {
+	}];
 
-});*/
+	var link = function (scope, ele, attrs) {
+		scope.s = null;
 
-	var controller = ['$scope', 'davosUrl', '$state', '$http', function ($scope, davosUrl, $state, $http) {
 		Sample = function (o) {
 			var self = this;
 
@@ -65,25 +67,36 @@ app.directive('ipreoWsSampleDetail', function () {
 			return $http.jsonp(url);
 		}
 
-		$scope.$watch(function () {
-			if ($scope.sample) {
-				return $scope.sample.parsedParams;
+		scope.$watch(function () {
+			return scope.sample;
+		}, function (n, o) {
+			if (n) {
+				scope.s = new Sample(n);
+			}
+		});
+
+		scope.$watch(function () {
+			if (scope.s) {
+				return scope.s.parsedParams;
 			}
 		}, function (n, o) {
-			//allow querying
+			//params changed, allow querying
+			if (n) {
+				scope.s.isQueryable = true;
+				
+				//update query string
+				scope.s.queryString = getQueryString(scope.s);
+			}
+
+
 		}, true);
 
-		$scope.clickSample = function (s) {
-			$scope.sample = new Sample(s);
-		};
+		
 
-		$scope.clickBack = function () {
-			$scope.sample = null;
-		};
-
-		$scope.clickQuery = function () {
-			getResult($scope.sample.queryString).then(function (d) {
-				$scope.result = d.data;
+		scope.clickQuery = function () {
+			scope.s.isQueryable = false;
+			getResult(scope.s.queryString).then(function (d) {
+				scope.result = d.data;
 			});
 		};
 
@@ -101,10 +114,6 @@ app.directive('ipreoWsSampleDetail', function () {
 
 			return urlParams;
 		};
-
-	}];
-
-	var link = function (scope, ele, attrs) {
 	};
 
 	return {

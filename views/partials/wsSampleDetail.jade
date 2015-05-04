@@ -1,21 +1,17 @@
-.well.well-sm.ws-sample
-	h3.title {{sample.name}}
+.sample-detail
+	.col-xs-12.form-horizontal
+		.form-group(ng-repeat='(k, v) in s.parsedParams')
+			label.col-xs-4.control-label(ng-bind='s.trueKeyNames[k]')
+			.col-xs-8
+				input.form-control(ng-model='v.value')
 
-	.sample-detail
-		.col-xs-12.form-horizontal
-			.form-group(ng-repeat='(k, v) in sample.parsedParams')
-				label.col-xs-4.control-label(ng-bind='sample.trueKeyNames[k]')
-				.col-xs-8
-					input.form-control(ng-model='v.value')
-		.col-xs-4
-			button.btn.btn-info.btn-block(ng-click='clickBack()') Back
-		.col-xs-4.col-xs-offset-4
-			button.btn.btn-info.btn-block(ng-click='clickQuery()') Query
-		.row
-			.col-xs-12
-				.form-group
-					label.col-xs-4.control-label Query String
-					.col-xs-8
-						input.form-control(type='text', ng-model='sample.queryString', placeholder='Query String', readonly)
+	.col-xs-4.col-xs-offset-8
+		button.btn.btn-info.btn-block(ng-click='clickQuery()', ng-disabled="!s.isQueryable") Query
+	.row
 		.col-xs-12
-			json-formatter(open='1', json='sample.result').json-formatter-dark
+			.form-group
+				label.col-xs-4.control-label Query String
+				.col-xs-8
+					input.form-control(type='text', ng-model='s.queryString', placeholder='Query String', readonly)
+	.col-xs-12
+		json-formatter(open='1', json='s.result').json-formatter-dark
