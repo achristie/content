@@ -299,6 +299,10 @@ table .mea { color: rgb(255, 187, 120); padding-right: 5px;}
 .no-left-padding { padding-left: 0;}
 .lm .pad-bottom { padding-bottom: 25px;}
 
-
-
 /* end of learn more page */
+
+.ws-sample .fa-arrow-left { padding-right: 15px; }
+.ws-sample h3.title.ng-hide-remove { animation: moveFromLeft 1s; -webkit-animation: slideInLeft 0.3s; }
+
+ipreo-ws-sample-detail .bg-dark { background: rgb(4, 32, 41); }
+ipreo-ws-sample-list > .list-group > .list-group-item:hover { background: rgb(120, 120, 120); color: white;}

@@ -6,10 +6,21 @@
 		{ "authType": "oAuth", "path": "/oauth/rest/API/InvestorProfileEQ.svc" },
 		{ "authType": "httpBasic", "path": "/public/rest/API/InvestorProfileEQ.svc"}
 	],
-	"samples": [
-		{ "name": "Including Focus Security", "params": "$Components=InvestorDetails,TopHoldings,TopBuys,TopSells,FocusOwnership&investor_id=606617&security_id=119773&$format=json" },
-		{ "name": "Including Focus Security", "params": "$format=json&$Components=InvestorDetails,TopHoldings,TopBuys,TopSells,FocusOwnership&investor_id=606617&security_id=119773" },
-		{ "name": "Including Focus Security", "params": "$format=json&$Components=InvestorDetails,TopHoldings,TopBuys,TopSells,FocusOwnership&investor_id=606617&security_id=119773" },
-		{ "name": "Including Focus Security", "params": "$format=json&$Components=InvestorDetails,TopHoldings,TopBuys,TopSells,FocusOwnership&investor_id=606617&security_id=119773" }
-	]
+	"samples": [{
+		"name": "Including Focus Security",
+		"description": "Useful because..."
+		"params": [{
+			"name": "$format",
+			"visible": false,
+			"editable": false,
+			"description": "",
+			"defaultValue": "json",
+		}, {
+			"name": "$components",
+			"visible": true,
+			"editable": true,
+			"description": "look here pal"
+			"defaultValue": "InvestorDetails,FocusOwnership"
+		}],
+	}]
 }

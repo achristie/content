@@ -1,2 +1,5 @@
-.list-group.scroll-y
-	a.list-group-item(href='#', ng-repeat='s in samples', ng-click='clickSample(s)') {{s.name}}
+.list-group
+	a.list-group-item(href='#', ng-repeat='s in samples', ng-click='clickSample(s)')
+		{{s.name}}
+		i.fa-arrow-right.fa.pull-right
+

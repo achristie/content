@@ -1,4 +1,4 @@
-.sample-detail
+.sample-detail.scroll-y
 	.col-xs-12.form-horizontal
 		.form-group(ng-repeat='(k, v) in s.parsedParams')
 			label.col-xs-4.control-label(ng-bind='s.trueKeyNames[k]')
@@ -13,5 +13,5 @@
 				label.col-xs-4.control-label Query String
 				.col-xs-8
 					input.form-control(type='text', ng-model='s.queryString', placeholder='Query String', readonly)
-	.col-xs-12
+	.col-xs-12.bg-dark
 		json-formatter(open='1', json='s.result').json-formatter-dark
