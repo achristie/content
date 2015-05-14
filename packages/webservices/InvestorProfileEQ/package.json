@@ -1,26 +1,108 @@
 {
-	"name": "InvestorProfileEQ",
-	"tags": ["EqOwnership", "Investor"],
-	"protocol": "Ipreo",
-	"endpoints": [
-		{ "authType": "oAuth", "path": "/oauth/rest/API/InvestorProfileEQ.svc" },
-		{ "authType": "httpBasic", "path": "/public/rest/API/InvestorProfileEQ.svc"}
-	],
-	"samples": [{
-		"name": "Including Focus Security",
-		"description": "Useful because..."
-		"params": [{
-			"name": "$format",
-			"visible": false,
-			"editable": false,
-			"description": "",
-			"defaultValue": "json",
-		}, {
-			"name": "$components",
-			"visible": true,
-			"editable": true,
-			"description": "look here pal"
-			"defaultValue": "InvestorDetails,FocusOwnership"
-		}],
-	}]
+    "name": "InvestorProfileEQ",
+    "tags": [
+        "EqOwnership",
+        "Investor"
+    ],
+    "protocol": "Ipreo",
+    "endpoints": [
+        {
+            "authType": "oAuth",
+            "path": "/API/Sample/InvestorProfileEQ.svc"
+        },
+        {
+            "authType": "httpBasic",
+            "path": "/API/Sample/InvestorProfileEQ.svc"
+        }
+    ],
+    "samples": [
+        {
+            "name": "Including Focus Security",
+            "description": "Useful because...",
+            "params": [
+                {
+                    "name": "$format",
+                    "visible": false,
+                    "editable": false,
+                    "description": "",
+                    "defaultValue": "json"
+                },
+                {
+                    "name": "$components",
+                    "visible": true,
+                    "editable": true,
+                    "description": "look here pal",
+                    "defaultValue": "InvestorDetails,FocusOwnership"
+                },
+                {
+                    "name": "investor_id",
+                    "visible": true,
+                    "editable": true,
+                    "description": "Ipreo Identifier",
+                    "defaultValue": 606617
+                },
+                {
+                    "name": "security_id",
+                    "visible": true,
+                    "editable": true,
+                    "description": "Ipreo Identifier",
+                    "defaultValue": 119773
+                }
+            ]
+        },
+        {
+            "name": "General Investor Details",
+            "description": "Useful because...",
+            "params": [
+                {
+                    "name": "$format",
+                    "visible": false,
+                    "editable": false,
+                    "description": "",
+                    "defaultValue": "json"
+                },
+                {
+                    "name": "$components",
+                    "visible": true,
+                    "editable": true,
+                    "description": "look here pal",
+                    "defaultValue": "InvestorDetails"
+                },
+                {
+                    "name": "investor_id",
+                    "visible": true,
+                    "editable": true,
+                    "description": "Ipreo Identifier",
+                    "defaultValue": 606617
+                }
+            ]
+        },
+        {
+            "name": "Top Holdings, Buys, Sells",
+            "description": "Useful because...",
+            "params": [
+                {
+                    "name": "$format",
+                    "visible": false,
+                    "editable": false,
+                    "description": "",
+                    "defaultValue": "json"
+                },
+                {
+                    "name": "$components",
+                    "visible": true,
+                    "editable": true,
+                    "description": "look here pal",
+                    "defaultValue": "TopHoldings,TopBuys,TopSells"
+                },
+                {
+                    "name": "investor_id",
+                    "visible": true,
+                    "editable": true,
+                    "description": "Ipreo Identifier",
+                    "defaultValue": 606617
+                }
+            ]
+        }
+    ]
 }

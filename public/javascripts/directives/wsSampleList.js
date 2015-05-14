@@ -11,10 +11,6 @@ app.directive('ipreoWsSampleList', function () {
 
 	return {
 		restrict: 'E',
-		scope: {
-			samples: '=',
-			sample: '='
-		},
 		templateUrl: '/partials/wsSampleList',
 		controller: controller,
 		link: link

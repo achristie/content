@@ -5,13 +5,25 @@ app.factory('davosUrl', function () {
 		grantType = 'client_credentials';
 
 	var oAuthToken = '&client_id=' + clientId + '&client_secret=' + clientSecret + '&grant_type=' + grantType;
-	var baseUrl = 'https://davos.qx.ipreo.com/oauth/rest';
+	var baseUrl = 'https://davos.qx.ipreo.com';
+
+	function getAuthSegment(authType) {
+		if (authType == "oAuth") {
+			return "/oauth/rest";
+		} else if (authType == "httpBasic") {
+			return "/public/rest";
+		}
+
+		//assume oauth
+		return "/oauth/rest";
+	}
 
 	return {
 		//pass in a path like /api/sample/Flow.svc
 		//get back url with path
-		getUrl: function (path) {
-			return baseUrl + path;
+		getUrl: function (path, authType) {
+			var authSegment = getAuthSegment(authType);
+			return baseUrl + authSegment + path;
 		},
 		getToken: function () {
 			return oAuthToken;

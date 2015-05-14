@@ -12,48 +12,22 @@ app.directive('ipreoWsSampleDetail', function ($http, $state, davosUrl) {
 
 			self.name = o.name;
 			self.params = o.params;
+			self.description = o.description;
 			self.isQueryable = false;
-			
-			var o = getParsedParams(self.params);
-			self.parsedParams = o.parsedParams;
-			self.trueKeyNames = o.trueKeyNames;
 
-			self.queryString = getQueryString(self);
+			self.queryString = getQueryString(self.params);
 			self.result = {};
+
 			getResult(self.queryString).then(function (d) { 
 				self.result = d.data; 
 			});
 		};
 
-		function getParsedParams(params) {
-			var p = parseQueryString(params),
-				o = {};
-
-				//o is returned
-				o.trueKeyNames = {};
-				o.parsedParams = {};
-
-				$.each(p, function (k, v) {
-					o.trueKeyNames[k] = k;
-
-					if (k.substring(0, 1) == '$') {
-						var t = k;
-						k = k.slice(1, k.length);
-
-						o.trueKeyNames[k] = t;
-					}
-
-					o.parsedParams[k] = {value: v};
-				});
-
-			return o;
-		}
-
-		function getQueryString(s) {
+		function getQueryString(p) {
 			var o = {};
 
-			$.each(s.parsedParams, function (k, v) {
-				o[s.trueKeyNames[k]] = v.value;
+			$.each(p, function (i, v) {
+				o[v.name] = v.defaultValue;
 			});
 			return $.param(o);
 		}
@@ -63,7 +37,7 @@ app.directive('ipreoWsSampleDetail', function ($http, $state, davosUrl) {
 			var tkn = davosUrl.getToken();
 
 			url = url + '/?' + q + '&$callback=JSON_CALLBACK' + tkn;
-
+			//scope.s.isQueryable = false;
 			return $http.jsonp(url);
 		}
 
@@ -77,7 +51,7 @@ app.directive('ipreoWsSampleDetail', function ($http, $state, davosUrl) {
 
 		scope.$watch(function () {
 			if (scope.s) {
-				return scope.s.parsedParams;
+				return scope.s.params;
 			}
 		}, function (n, o) {
 			//params changed, allow querying
@@ -85,35 +59,18 @@ app.directive('ipreoWsSampleDetail', function ($http, $state, davosUrl) {
 				scope.s.isQueryable = true;
 				
 				//update query string
-				scope.s.queryString = getQueryString(scope.s);
+				scope.s.queryString = getQueryString(scope.s.params);
 			}
 
 
 		}, true);
 
-		
-
 		scope.clickQuery = function () {
-			scope.s.isQueryable = false;
 			getResult(scope.s.queryString).then(function (d) {
-				scope.result = d.data;
+				scope.s.result = d.data;
 			});
 		};
 
-		var parseQueryString = function (q) {
-			var match,
-				pl = /\+/g, 
-				search = /([^&=]+)=?([^&]*)/g,
-				decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
-				query  = q;
-
-			urlParams = {};
-			while (match = search.exec(query)) {
-				urlParams[decode(match[1])] = decode(match[2]);
-			}
-
-			return urlParams;
-		};
 	};
 
 	return {

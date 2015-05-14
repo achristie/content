@@ -302,7 +302,34 @@ table .mea { color: rgb(255, 187, 120); padding-right: 5px;}
 /* end of learn more page */
 
 .ws-sample .fa-arrow-left { padding-right: 15px; }
-.ws-sample h3.title.ng-hide-remove { animation: moveFromLeft 1s; -webkit-animation: slideInLeft 0.3s; }
-
+/*.ws-sample h3.title.ng-hide-remove { animation: moveFromLeft 1s; -webkit-animation: slideInLeft 0.3s; }
+*/
 ipreo-ws-sample-detail .bg-dark { background: rgb(4, 32, 41); }
+ipreo-ws-sample-detail .sample-detail { padding: 10px 15px;}
+
 ipreo-ws-sample-list > .list-group > .list-group-item:hover { background: rgb(120, 120, 120); color: white;}
+
+.ws ul.resp-list { list-style: none; padding: 0; }
+.ws ul.resp-list li { text-align: center; padding:5px 10px; border-right: 1px solid #eee; cursor: pointer; margin-bottom: 1px; background: rgb(64, 99, 140);}
+.ws ul.resp-list li > a { color: white; text-decoration: none; font-weight: 600;}
+.ws ul.resp-list li:hover, .ws ul.resp-list li.active { background: white; }
+.ws ul.resp-list li:hover > a, .ws ul.resp-list li.active > a { color: rgb(64, 99, 140);}
+
+
+
+.titlea.ng-enter, .titlea.ng-leave,
+.ng-anchor {
+  transition:0.5s linear all;
+}
+.titlea.ng-enter {
+  transform:translateX(100%);
+}
+.titlea.ng-enter.ng-enter-active, .titlea.ng-leave {
+  transform:translateX(0%);
+}
+.titlea.ng-leave.ng-leave-active {
+  transform:translateX(-100%);
+}
+.ng-anchor-out {
+  background:red;
+}

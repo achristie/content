@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
+var partials = require('./routes/partials');
 var api = require('./routes/api');
 
 var app = express();
@@ -24,8 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', routes.index);
 app.get('/navLayout', routes.navLayout);
-app.get('/partials/:name', routes.partials);
-app.get('/recorder', routes.recorder);
+app.use('/partials', partials);
 app.use('/api', api);
 
 //app.get('*', routes.index);
