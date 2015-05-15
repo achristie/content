@@ -2,7 +2,6 @@ app.controller('WebServCtrl', function ($scope, $state, ws, davosUrl) {
 	$scope.package = {};
 	$scope.error = {};
 	$scope.hasError = false;
-	$scope.component = {};
 
 	ws.getWsInfo($state.params.subGroup).then(function (data, status) {
 		//0 is package.Json
@@ -13,7 +12,6 @@ app.controller('WebServCtrl', function ($scope, $state, ws, davosUrl) {
 		$scope.package = data[0].data;
 		$scope.readme = data[1].data;
 		$scope.description = data[2].data;
-		$scope.component = data[2].data.Components[0];
 	}, function (error) {
 		$scope.hasError = true;
 	});

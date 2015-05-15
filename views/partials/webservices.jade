@@ -1,7 +1,7 @@
 .ws
 	.row
 		.col-xs-12
-			h1 {{package.name}}
+			h1 {{::package.name}}
 	.row
 		.col-xs-12(ng-show='hasError')
 			.alert.alert-danger
@@ -9,34 +9,36 @@
 				p Contact us if this continues.
 	.row
 		.col-xs-6
-			.alert.alert-success
-				p {{readme}}
+			.alert.alert-info
+				p {{::readme}}
 			h3.text-primary Endpoints
 			.list-group
-				.list-group-item(ng-repeat='ep in package.endpoints')
-					h4.list-group-item-heading {{ep.authType}}
+				.list-group-item(ng-repeat='ep in ::package.endpoints')
+					h4.list-group-item-heading {{::ep.authType}}
 					p.list-group-item-text(ng-bind='getUrl(ep.path, ep.authType)')
 
 		.col-xs-6
-			ipreo-ws-sample(samples='package.samples', sample='sample')
+			//ipreo-ws-sample(samples='package.samples', sample='sample')
 			
 	.row
 		.col-xs-12
 			h3.text-primary Response
-			ul.resp-list
-				li.col-xs-4.col-sm-3.col-md-2(ng-repeat='c in description.Components', ng-click='clickComponent(c)', ng-class='{active: c.Name == component.Name}')
-					a {{c.Name}}
-	.row
-		.col-xs-12
-			.resp-group
-				h4 {{component.Name}}
-				table.table.table-condensed.table-bordered
-					tr
-						th.col-xs-4.col-md-3 Name
-						th.col-xs-2.col-md-1 Type
-						th.col-xs-6.col-md-7 Description
-					tr(ng-repeat='rf in component.ResponseFields')
-						td {{rf.Name}}
-						td {{rf.FieldType}}
-						td {{rf.Description}}
-			
+			.resp-nav
+				ul.nav.nav-pills.nav-stacked
+					li(ng-repeat='c in description.Components')
+						a(du-smooth-scroll='{{c.Name}}', du-scrollspy='') {{::c.Name}}
+			.resp-table
+				.col-xs-12
+					div(ng-repeat='component in description.Components', ng-attr-name='{{component.Name}}')
+						h4 {{::component.Name}}
+						.alert.alert-info
+							p {{::component.Description}}
+						table.table.table-condensed.table-bordered
+							tr
+								th.col-xs-4.col-md-3 Name
+								th.col-xs-2.col-md-1 Type
+								th.col-xs-6.col-md-7 Description
+							tr(ng-repeat='rf in ::component.ResponseFields')
+								td {{::rf.Name}}
+								td {{::rf.FieldType}}
+								td {{::rf.Description}}

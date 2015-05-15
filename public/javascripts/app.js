@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngAnimate', 'ui.router', 'ui.bootstrap', 'd3', 'jsonFormatter']);
+var app = angular.module('app', ['ngAnimate', 'ui.router', 'ui.bootstrap', 'd3', 'jsonFormatter', 'duScroll']);
 
 app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $provide) {
 	$urlRouterProvider.otherwise('/');
