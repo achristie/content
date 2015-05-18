@@ -2,7 +2,7 @@ app.directive('ipreoWsSampleList', function () {
 	
 	var controller = ['$scope', function ($scope) {
 		$scope.clickSample = function (s) {
-			$scope.sample = s;
+			$scope.$emit('sampleSelected', s);
 		}
 	}];
 
@@ -11,7 +11,7 @@ app.directive('ipreoWsSampleList', function () {
 
 	return {
 		restrict: 'E',
-		templateUrl: '/partials/wsSampleList',
+		templateUrl: '/partials/wsSample/list.jade',
 		controller: controller,
 		link: link
 	}

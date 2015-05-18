@@ -78,7 +78,7 @@ app.directive('ipreoWsSampleDetail', function ($http, $state, davosUrl) {
 		scope: {
 			sample: '='
 		},
-		templateUrl: '/partials/wsSampleDetail',
+		templateUrl: '/partials/wsSample/detail',
 		controller: controller,
 		link: link
 	}

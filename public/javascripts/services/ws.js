@@ -15,7 +15,26 @@ app.factory('ws', function ($http, $q, davosUrl) {
 		url = url + '/$description?$format=json&$callback=JSON_CALLBACK' + davosUrl.getToken();
 		//var url = 'https://davos.app.ipreo.com/rest/api/Sample/' + subGroup + '.svc/$description?$format=json&$callback=JSON_CALLBACK';
 
-		return $http.jsonp(url);
+		return $http.jsonp(url).then(function (d) {
+			//get unique request parameters
+
+			var arr = [],
+			//ignore params which are part of Ipreo Rest Protocol and thus not service specific
+				lst = ['$top', '$skip', '$format', '$orderby'];
+
+			$.each(d.data.Components, function (i, v) {
+				$.each(v.RequestParameters, function (i, v) {
+					if (lst.indexOf(v.Name) == -1) {
+						lst.push(v.Name);
+						arr.push(v);
+					}
+				})
+			})
+
+			d.data['requestParams'] = arr;
+
+			return d;
+		});
 	};
 
 	return {

@@ -5,20 +5,25 @@ router.get('/webservices', function (req, res, next) {
 	res.json({
 		"collections": [
 			{
+				"collection": "Get Started",
+				"icon": "arrow-circle-right",
+				"items": ["About", "REST Protocol", "Authentication", "Examples"]
+			},
+			{
 				"collection": "Ownership",
-				"items": ["EqInvestorOwnership", "InvestorProfileEQ", "AdvancedOwnership", "Others..."]
+				"items": ["InvestorProfileEQ", "InvestorProfileFI"]
 			},
 			{
 				"collection": "Contacts",
-				"items": ["ContactOwnership", "Contact411", "etc", "testing.."]
+				"items": ["Contact411"]
 			},
 			{
 				"collection": "Investors",
-				"items": ["EqInvestorOwnership", "AdvancedOwnership", "HistoricalInvestorOwnership"]
+				"items": ["InvestorLookupEQ", "InvestorLookupFI", "HistoricalInvestorOwnership"]
 			},
 			{
-				"collection": "Events",
-				"items": ["MeetingSchedules", "EqSecurityOwnership", "AdvancedOwnership", "Others..."]
+				"collection": "Deals",
+				"items": ["DealProfileEQ", "DealCalendarEQ"]
 			}
 		]
 	});

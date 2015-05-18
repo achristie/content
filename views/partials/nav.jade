@@ -2,6 +2,7 @@ accordion(close-others='true')
 	accordion-group(ng-repeat='c in col', is-open='c.isOpen').repeat-animation
 		accordion-heading
 			div(ng-class='getBackground()')
+				i.fa(ng-class='{{c.icon}}')
 				{{c.name}}
 		ul.list-group
 			li.list-group-item(ng-repeat='i in c.items', ng-class='getColor()', ng-click='setState(c, i)')

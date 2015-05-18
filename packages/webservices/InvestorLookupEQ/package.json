@@ -1,0 +1,101 @@
+{
+    "name": "InvestorLookupEQ",
+    "tags": [
+        "EqOwnership",
+        "Investor"
+    ],
+    "protocol": "Ipreo",
+    "endpoints": [
+        {
+            "authType": "oAuth",
+            "path": "/API/Sample/InvestorLookupEQ.svc"
+        },
+        {
+            "authType": "httpBasic",
+            "path": "/API/Sample/InvestorLookupEQ.svc"
+        }
+    ],
+    "samples": [
+        {
+            "name": "Investor Name Contains Wellington",
+            "description": "Useful because...",
+            "params": [
+                {
+                    "name": "$format",
+                    "visible": false,
+                    "editable": false,
+                    "description": "",
+                    "defaultValue": "json"
+                },
+                {
+                    "name": "investor_name",
+                    "visible": true,
+                    "editable": true,
+                    "description": "Investor Name",
+                    "defaultValue": "Wellington"
+                }
+            ]
+        },
+        {
+            "name": "Funds Connected to Wellington with at least 20 Securities Held ",
+            "description": "Useful because...",
+            "params": [
+                {
+                    "name": "$format",
+                    "visible": false,
+                    "editable": false,
+                    "description": "",
+                    "defaultValue": "json"
+                },
+                {
+                    "name": "investor_name",
+                    "visible": true,
+                    "editable": true,
+                    "description": "Investor Name",
+                    "defaultValue": "Wellington"
+                },
+                {
+                    "name": "total_share_quantity",
+                    "visible": true,
+                    "editable": true,
+                    "description": "Eq Securities Held (>=)",
+                    "defaultValue": "20"
+                },
+                {
+                    "name": "fund_ind",
+                    "visible": true,
+                    "editable": true,
+                    "description": "Fund Indicator",
+                    "defaultValue": "false"
+                }
+            ]
+        },
+        {
+            "name": "Top Holdings, Buys, Sells",
+            "description": "Useful because...",
+            "params": [
+                {
+                    "name": "$format",
+                    "visible": false,
+                    "editable": false,
+                    "description": "",
+                    "defaultValue": "json"
+                },
+                {
+                    "name": "$components",
+                    "visible": true,
+                    "editable": true,
+                    "description": "look here pal",
+                    "defaultValue": "TopHoldings,TopBuys,TopSells"
+                },
+                {
+                    "name": "investor_id",
+                    "visible": true,
+                    "editable": true,
+                    "description": "Ipreo Identifier",
+                    "defaultValue": 606617
+                }
+            ]
+        }
+    ]
+}

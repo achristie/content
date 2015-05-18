@@ -16,9 +16,14 @@
 				.list-group-item(ng-repeat='ep in ::package.endpoints')
 					h4.list-group-item-heading {{::ep.authType}}
 					p.list-group-item-text(ng-bind='getUrl(ep.path, ep.authType)')
+			h3.text-primary Request Parameters
+			.list-group
+				.list-group-item(ng-repeat='req in ::description.requestParams')
+					h4.list-group-item-heading {{::req.Name}}
+
 
 		.col-xs-6
-			//ipreo-ws-sample(samples='package.samples', sample='sample')
+			ipreo-ws-sample(samples='package.samples', sample='sample')
 			
 	.row
 		.col-xs-12
@@ -37,7 +42,7 @@
 								td {{::rf.Name}}
 								td {{::rf.FieldType}}
 								td {{::rf.Description}}
-			.resp-nav.col-sm-3.col-md-3
-				ul.nav.nav-pills.nav-stacked(ui-scrollfix='-1000')
+			.resp-nav.col-sm-3.col-md-3(ui-scrollfix='')
+				ul.nav.nav-pills.nav-stacked
 					li(ng-repeat='c in description.Components')
 						a(du-smooth-scroll='{{c.Name}}', du-scrollspy='', href='#{{c.Name}}') {{::c.Name}}

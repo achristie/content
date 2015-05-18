@@ -12,6 +12,7 @@ app.controller('WebServCtrl', function ($scope, $state, ws, davosUrl) {
 		$scope.package = data[0].data;
 		$scope.readme = data[1].data;
 		$scope.description = data[2].data;
+
 	}, function (error) {
 		$scope.hasError = true;
 	});

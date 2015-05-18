@@ -313,21 +313,26 @@ ipreo-ws-sample-list > .list-group > .list-group-item:hover { background: rgb(12
 
 .resp-table > div { margin-left: -15px; margin-right: -15px;}
 
-.titlea.ng-enter, .titlea.ng-leave,
-.ng-anchor {
-  transition:0.5s linear all;
+
+.ws-sample {
+  position:relative;
 }
-.titlea.ng-enter {
-  transform:translateX(100%);
+.ws-sample > div.ng-animate {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
 }
-.titlea.ng-enter.ng-enter-active, .titlea.ng-leave {
-  transform:translateX(0%);
-}
-.titlea.ng-leave.ng-leave-active {
-  transform:translateX(-100%);
-}
-.ng-anchor-out {
-  background:red;
+.ws-sample > div.ng-enter, .ws-sample > div.ng-leave, .title-transition.ng-anchor {
+  transition:5.4s linear all;
 }
 
-.affix { position: fixed; top: 75px; }
+.ws-sample > div.ng-enter {
+  transform:translateX(100%);
+}
+.ws-sample > div.ng-enter.ng-enter-active, .ws-sample > div.ng-leave {
+  transform:translateX(0%);
+}
+.ws-sample > div.ng-leave.ng-leave-active {
+  transform:translateX(-100%);
+}
