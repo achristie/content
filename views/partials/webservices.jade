@@ -23,13 +23,8 @@
 	.row
 		.col-xs-12
 			h3.text-primary Response
-			.resp-nav
-				ul.nav.nav-pills.nav-stacked
-					li(ng-repeat='c in description.Components')
-						a(du-smooth-scroll='{{c.Name}}', du-scrollspy='') {{::c.Name}}
-			.resp-table
-				.col-xs-12
-					div(ng-repeat='component in description.Components', ng-attr-name='{{component.Name}}')
+			.resp-table.col-sm-9.col-md-9
+					div(ng-repeat='component in description.Components', id='{{component.Name}}')
 						h4 {{::component.Name}}
 						.alert.alert-info
 							p {{::component.Description}}
@@ -42,3 +37,7 @@
 								td {{::rf.Name}}
 								td {{::rf.FieldType}}
 								td {{::rf.Description}}
+			.resp-nav.col-sm-3.col-md-3
+				ul.nav.nav-pills.nav-stacked(ui-scrollfix='-1000')
+					li(ng-repeat='c in description.Components')
+						a(du-smooth-scroll='{{c.Name}}', du-scrollspy='', href='#{{c.Name}}') {{::c.Name}}
