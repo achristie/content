@@ -37,6 +37,15 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $pro
 				}
 			}
 		})
+		.state('app.taxonomy', {
+			url: '/taxonomy',
+			views: {
+				'content@': {
+					templateUrl: '/partials/taxonomy',
+					controller: 'TaxonomyCtrl'
+				}
+			}
+		})
 		.state('app.globalDataCoverage', {
 			url: '/gdc',
 			views: {

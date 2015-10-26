@@ -182,6 +182,8 @@ video {
 /* Have to set height explicity on ui-view 
 to prevent collapsing during animation*/
 
+;
+
 .page.ng-enter, .page.ng-leave {
     -webkit-animation-duration: 0.5s;
     animation-duration: 0.5s;
@@ -324,7 +326,7 @@ ipreo-ws-sample-list > .list-group > .list-group-item:hover { background: rgb(12
   width:100%;
 }
 .ws-sample > div.ng-enter, .ws-sample > div.ng-leave, .title-transition.ng-anchor {
-  transition:5.4s linear all;
+  transition:0.4s linear all;
 }
 
 .ws-sample > div.ng-enter {

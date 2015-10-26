@@ -1,0 +1,90 @@
+{
+	"Entities":[
+		{
+			"name":"Companies",
+			"properties":[
+
+			],
+			"contents":[
+				{
+					"name":"Strategic",
+					"properties":[
+
+					],
+					"contents":[
+						{
+							"name":"Private",
+							"properties":[
+
+							],
+							"contents":[
+
+							]
+						},
+						{
+							"name":"Public",
+							"properties":[
+
+							],
+							"contents":[
+
+							]
+						}
+					]
+				},
+				{
+					"name":"Buyside",
+					"properties":[
+
+					],
+					"contents":[
+						{
+							"name":"Institution",
+							"properties":[
+
+							],
+							"contents":[
+
+							]
+						},
+						{
+							"name":"Fund",
+							"properties":[
+
+							],
+							"contents":[
+
+							]
+						}
+					]
+				},
+				{
+					"name":"Sellside",
+					"properties":[
+
+					],
+					"contents":[
+						{
+							"name":"Broker",
+							"properties":[
+
+							],
+							"contents":[
+
+							]
+						},
+						{
+							"name":"Research",
+							"properties":[
+
+							],
+							"contents":[
+
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}
