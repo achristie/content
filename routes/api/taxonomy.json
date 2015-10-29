@@ -3,21 +3,30 @@
 		{
 			"name":"Companies",
 			"properties":[
-
+				{ "name": "Id", "type": "int" },
+				{ "name": "Name", "type": "string" },
+				{ "name": "Country", "type": "string" },
+				{ "name": "Id", "type": "int" },
+				{ "name": "Filings", "type": "Filing[]" },
+				{ "name": "EquityPositions", "type": "EquityPosition[]" }				
 			],
-			"contents":[
+			"children":[
 				{
 					"name":"Strategic",
 					"properties":[
+						{ "name": "Industry", "type": "string" },
+						{ "name": "IndustryId", "type": "int" },
+						{ "name": "Securities", "type": "Security[]" },
+						{ "name": "Holders", "type": "EquityPosition[]" }
 
 					],
-					"contents":[
+					"children":[
 						{
 							"name":"Private",
 							"properties":[
 
 							],
-							"contents":[
+							"children":[
 
 							]
 						},
@@ -26,7 +35,7 @@
 							"properties":[
 
 							],
-							"contents":[
+							"children":[
 
 							]
 						}
@@ -37,13 +46,13 @@
 					"properties":[
 
 					],
-					"contents":[
+					"children":[
 						{
 							"name":"Institution",
 							"properties":[
 
 							],
-							"contents":[
+							"children":[
 
 							]
 						},
@@ -52,7 +61,7 @@
 							"properties":[
 
 							],
-							"contents":[
+							"children":[
 
 							]
 						}
@@ -63,13 +72,13 @@
 					"properties":[
 
 					],
-					"contents":[
+					"children":[
 						{
 							"name":"Broker",
 							"properties":[
 
 							],
-							"contents":[
+							"children":[
 
 							]
 						},
@@ -78,7 +87,7 @@
 							"properties":[
 
 							],
-							"contents":[
+							"children":[
 
 							]
 						}

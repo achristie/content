@@ -14,6 +14,7 @@ app.directive('diagram', function (d3Service) {
 					rectH = 30;
 
 				var tree = d3.layout.tree().nodeSize([70, 40]);
+			
 				var diagonal = d3.svg.diagonal()
 					.projection(function (d) {
 						return [d.x + rectW / 2, d.y + rectH /2];
@@ -28,11 +29,28 @@ app.directive('diagram', function (d3Service) {
 					nodes.forEach(function (d) {
 						d.y = d.depth * 180;
 					});
+					
 
 					var node = svg.selectAll('g.node')
 						.data(nodes, function (d) {
 							return d.id;
 					});
+
+					var nodeEnter = node.enter().append('g')
+						.attr('class', 'node')
+						.attr('transform', function (d) {
+							return 'translate(' + d.x0 + ',' + d.y0 + ')';
+						});
+
+					nodeEnter.append('rect')
+						.attr('width', rectW)
+						.attr('height', rectH)
+						.attr('stroke', 'black')
+						.attr('stroke-width', 1)
+						.style('fill', function (d) {
+							return "red";
+						});
+
 
 					/*var nodeEnter = node.enter().append('g')
 						.attr('class', 'node')
