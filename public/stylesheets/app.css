@@ -338,3 +338,25 @@ ipreo-ws-sample-list > .list-group > .list-group-item:hover { background: rgb(12
 .ws-sample > div.ng-leave.ng-leave-active {
   transform:translateX(-100%);
 }
+
+
+.node {
+    cursor: pointer;
+}
+.node circle {
+    fill: #fff;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+}
+.node text {
+    font: 14px sans-serif;
+}
+.link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 1.5px;
+}
+
+body {
+    overflow: hidden;
+}

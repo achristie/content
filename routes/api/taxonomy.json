@@ -6,7 +6,6 @@
 				{ "name": "Id", "type": "int" },
 				{ "name": "Name", "type": "string" },
 				{ "name": "Country", "type": "string" },
-				{ "name": "Id", "type": "int" },
 				{ "name": "Filings", "type": "Filing[]" },
 				{ "name": "EquityPositions", "type": "EquityPosition[]" }				
 			],
@@ -19,26 +18,6 @@
 						{ "name": "Securities", "type": "Security[]" },
 						{ "name": "Holders", "type": "EquityPosition[]" }
 
-					],
-					"children":[
-						{
-							"name":"Private",
-							"properties":[
-
-							],
-							"children":[
-
-							]
-						},
-						{
-							"name":"Public",
-							"properties":[
-
-							],
-							"children":[
-
-							]
-						}
 					]
 				},
 				{
@@ -50,7 +29,7 @@
 						{
 							"name":"Institution",
 							"properties":[
-
+								{ "name": "FundsManaged", "type": "Fund[]" }
 							],
 							"children":[
 
@@ -59,7 +38,7 @@
 						{
 							"name":"Fund",
 							"properties":[
-
+								{ "name" : "Managers", "type": "Institution[]" }
 							],
 							"children":[
 

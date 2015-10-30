@@ -1,66 +1,67 @@
 app.directive('diagram', function (d3Service) {
-	var margin = { top: 20, right: 120, bottom: 20, left: 120 },
-		width = 960 - margin.right - margin.left,
-		height = 800 - margin.top - margin.bottom;
+	var margin = { top: 60, right: 10, bottom: 20, left: 10 },
+		width = 1000 - margin.right - margin.left,
+		height = 350 - margin.top - margin.bottom;
 
 
 	return {
 		restrict: 'E',
-		scope: { data: '=data'},
+		scope: { data: '=data', onClick: '&'},
 		link: function (scope, ele, attrs) {
 			//must have value field as an attribute
 			d3Service.d3().then(function (d3) {
-				var rectW = 60,
-					rectH = 30;
-
-				var tree = d3.layout.tree().nodeSize([70, 40]);
+				var i = 0;
+				var tree = d3.layout.tree().nodeSize([100, 200]);
 			
 				var diagonal = d3.svg.diagonal()
-					.projection(function (d) {
-						return [d.x + rectW / 2, d.y + rectH /2];
-					});
+					.projection(function (d) { return [d.x, d.y]; });
 
-				var svg = d3.select(ele[0]).append("svg").attr('width', 1000).attr('height', 1000);
+				var svg = d3.select(ele[0]).append("svg")
+						.attr('width', width + margin.right + margin.left)
+						.attr('height', height + margin.top + margin.bottom)
+					.append('g')
+						.attr('transform', 'translate(' + 450 + ',' + 70 + ')');
+
+				render(scope.data);
 
 				function render(data) {
 					var nodes = tree.nodes(data).reverse(),
 						links = tree.links(nodes);
 
-					nodes.forEach(function (d) {
-						d.y = d.depth * 180;
-					});
-					
+					nodes.forEach(function (d) { d.y = d.depth * 100; });
 
 					var node = svg.selectAll('g.node')
-						.data(nodes, function (d) {
-							return d.id;
-					});
+						.data(nodes, function (d) { return d.id || (d.id = ++i); });
 
 					var nodeEnter = node.enter().append('g')
-						.attr('class', 'node')
-						.attr('transform', function (d) {
-							return 'translate(' + d.x0 + ',' + d.y0 + ')';
-						});
-
-					nodeEnter.append('rect')
-						.attr('width', rectW)
-						.attr('height', rectH)
-						.attr('stroke', 'black')
-						.attr('stroke-width', 1)
-						.style('fill', function (d) {
-							return "red";
-						});
-
-
-					/*var nodeEnter = node.enter().append('g')
-						.attr('class', 'node')
-						.attr('transform', function (d) {
-							return 'translate(' + )
+					.on('click', function (d, i) {
+							return scope.onClick({item: d});
 						})
-*/
-				}
+						.attr('class', 'node')
+						.attr('transform', function (d) {
+							return 'translate(' + d.x + ',' + d.y + ')'; 
+						});
 
-				render(scope.data);
+					nodeEnter.append('circle')
+						.attr('r', 10)
+						.style('fill', '#fff');
+
+					nodeEnter.append('text')
+						.attr('y', function (d) {
+							return d.children || d._children ? -18 : 18; })
+						.attr('dy', '.45em')
+						.attr('text-anchor', 'middle')
+						.text(function (d) { return d.name; })
+						.style('fill-opacity', 1);
+
+					var link = svg.selectAll('path.link')
+						.data(links, function (d) { return d.target.id; });
+
+					link.enter().insert('path', 'g')
+						.attr('class', 'link')
+						.attr('d', diagonal);
+				}				
+
 			});
 		}
 	}			
