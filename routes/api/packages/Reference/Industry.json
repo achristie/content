@@ -1,0 +1,12 @@
+{
+	"name": "Industry",
+	"inheritsFrom": null,
+	"properties": [
+		{ "name": "Id", "type": "int" },
+		{ "name": "Name", "type": "string" },
+		{ "name": "MacroName", "type": "string" },
+		{ "name": "MacroId", "type": "int" },
+		{ "name": "MidName", "type": "string" },
+		{ "name": "MidId", "type": "int" }
+	]
+}

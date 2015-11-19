@@ -1,0 +1,10 @@
+{
+	"name": "Company",
+	"inheritsFrom": null,
+	"properties": [
+		{ "name": "Id", "type": "int" },
+		{ "name": "Name", "type": "string" },
+		{ "name": "Location", "type": "Reference.Location" },
+		{ "name": "Type", "type": "Reference.CompanyType" },
+	]
+}

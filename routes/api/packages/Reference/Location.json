@@ -1,0 +1,12 @@
+{
+	"name": "Location",
+	"inheritsFrom": "",
+	"properties": [
+		{ "name": "Address", "type": "Location.Address" },
+		{ "name": "City", "type": "City" },
+		{ "name": "Province", "type": "Province" },
+		{ "name": "Metro", "type": "Metro" },
+		{ "name": "Country", "type": "Country" },
+		{ "name": "Region", "type": "Region" },
+	]
+}

@@ -1,0 +1,11 @@
+{
+	"name": "CompanyType",
+	"inheritsFrom": null,
+	"properties": [
+		{ "name": "Name", "type": "string" },
+		{ "name": "Id", "type": "int" },
+		{ "name": "Group", "type": "string" },
+		{ "name": "ParentType", "type": "string" },
+		{ "name": "ParentTypeId", "type": "int" }
+	]
+}

@@ -1,0 +1,8 @@
+{
+	"name": :"Country",
+	"inheritsFrom": null,
+	"properties": [
+		{ "name": "Name", "type": "string" },
+		{ "name": "Code", "type": "string" }
+	]
+}
